@@ -1,5 +1,5 @@
 body{
-  background-color: rgb(70, 158, 213);
+  background-color: rgb(19, 18, 18);
 }
 
 .button{
@@ -22,8 +22,9 @@ body{
 
 .nav-bar-button{
   background-color: transparent;
+  color: white;
   font-size: 2em; 
-  border: 0.5px black solid;
+  border: 0.5px white solid;
   border-radius: 5px;
   margin-bottom: 5px;
 }
@@ -35,7 +36,8 @@ body{
 }
 
 #home-main{
-  padding-top: 5%;
+  background-image: url("images/road.jpg");
+  padding-top: 3%;
   padding-bottom: 1500px;
   display: flex;
   justify-content: center;
@@ -52,7 +54,7 @@ body{
   width: 600px;
   height: 700px;
   border-radius: 10px;
-  box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
 
