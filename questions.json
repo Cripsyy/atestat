@@ -16,7 +16,7 @@
     },
     {
         "number": 4,
-        "question":"4. Ce motorizare doriti sa aiba masina?",
+        "question":"Ce motorizare doriti sa aiba masina?",
         "answers":["benzina","diesel","hybrid","electric"]
     },
     {

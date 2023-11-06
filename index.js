@@ -4,7 +4,7 @@ fetch('questions.json')
   .then(response => response.json())
   .then(data => {
     jsonData = data;
-    test();
+    nextButton.addEventListener("click", nextQuestion);
   })
   .catch(error => {
     console.error('Error loading the file', error);
@@ -12,9 +12,12 @@ fetch('questions.json')
 
 function test(){
   if(jsonData){
-    const question = jsonData[3];
+    const question = jsonData[4];
     const number = question.number;
     console.log(number);
+    console.log(Object.keys(jsonData).lenght);
+    console.log(jsonData);
+    console.log(jsonData[7].question);
   }else{
     console.log("Data is not available yet")
   }
@@ -35,11 +38,17 @@ function startQuiz(){
     nextButton.classList.remove("hidden");
     previousButton.classList.remove("hidden");
     console.log("it works");
-    
 }
 
-function nextQuestion(){
+let i=0;
 
+function nextQuestion(){
+    if(i === jsonData.lenght){
+        i=0;
+    }
+    question.innerText=jsonData[i].question;
+    i++;
+    console.log(i);
 }
 
 function previousQuestion(){
