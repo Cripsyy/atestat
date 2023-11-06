@@ -3,9 +3,13 @@ body{
 }
 
 .button{
-  border: none;
+  border: 0.5px black solid;
   background: none;
   cursor: pointer;
+}
+
+.hidden{
+  display: none;
 }
 
 #nav-bar{
@@ -56,6 +60,7 @@ body{
   border-radius: 10px;
   box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5);
   z-index: 100;
+  position: relative;
 }
 
 .main-text{
@@ -65,5 +70,26 @@ body{
 .main-button{
   border: solid black 1px;
   padding: 5px 10px;
-  
 }
+
+.question{
+  font-size: 3em;
+  font-weight: 700;
+}
+
+.answers{
+  font-size: 2em;
+}
+
+.next-button{
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+}
+
+.previous-button{
+  position: absolute;
+  bottom: 2%;
+  left: 5%;
+}
+
