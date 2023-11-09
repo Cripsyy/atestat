@@ -81,7 +81,8 @@ body{
   font-size: 2em;
 }
 
-.next-button{
+.next-button,
+.finish-button{
   position: absolute;
   bottom: 2%;
   right: 5%;
@@ -92,4 +93,6 @@ body{
   bottom: 2%;
   left: 5%;
 }
+
+
 

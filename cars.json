@@ -10,6 +10,7 @@
         "mileage":0,
         "power":184,
         "size":1993,
-        "country":"Japonia"
+        "country":"Japonia",
+        "picture":"images/cars/honda-civic.jpg"
     }
 ]
