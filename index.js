@@ -1,60 +1,155 @@
-let jsonData;
-let index=0;
+const text = document.getElementById("main-text");
+const quizButton = document.getElementById("main-button");
+const nextButton = document.getElementById("next-button");
+const previousButton = document.getElementById("previous-button");
+const finishButton = document.getElementById("finish-button");
+const questionText = document.getElementById("question");
+const answersText = document.getElementById("answers");
 
-fetch('questions.json')
-  .then(response => response.json())
-  .then(data => {
-    jsonData = data;
-    nextButton.addEventListener("click", nextQuestion);
-    previousButton.addEventListener("click", previousQuestion);
-  })
-  .catch(error => {
-    console.error('Error loading the file', error);
-  });
+quizButton.addEventListener("click", startQuiz);
+nextButton.addEventListener("click", nextQuestion);
 
-let text = document.getElementsByClassName("main-text")[0];
-let quizButton = document.getElementsByClassName("main-button")[0];
-let nextButton = document.getElementsByClassName("next-button")[0];
-let previousButton = document.getElementsByClassName("previous-button")[0];
-let finishButton = document.getElementsByClassName("finish-button")[0];
-let question = document.getElementsByClassName("question")[0];
-let answers = document.getElementsByClassName("answers")[0];
+let questionIndex = 0;
 
 function startQuiz(){
   quizButton.classList.add("hidden");
   text.classList.add("hidden");
-  question.classList.remove("hidden");
-  answers.classList.remove("hidden");
+  questionText.classList.remove("hidden");
+  answersText.classList.remove("hidden");
   nextButton.classList.remove("hidden");
-  console.log("it works");
+
+  nextQuestion();
 }
 
 function nextQuestion(){
-  if(index === jsonData.length - 2){
-    finishButton.classList.remove("hidden");
-    nextButton.classList.add("hidden");
+  if(questionIndex < questions.length){
+    questionText.innerText = questions[questionIndex].question;
+    answersText.innerHTML = "";
+  
+    questions[questionIndex].answers.forEach(answer => {
+      const input = document.createElement('input');
+      input.setAttribute("type", questions[questionIndex].type);
+
+      const image = document.createElement('img');
+      if(answer.image){
+        image.src = answer.image;
+      }
+      
+      answersText.appendChild(input);
+      answersText.appendChild(image);
+      
+    })
+  
+    console.log(questions[questionIndex].answers.length);
+    questionIndex++;
+    console.log(questionIndex);
   }
-  if(index !== 1){
-    previousButton.classList.remove("hidden");
-  }
-  index++;
-  console.log(index); 
-  question.innerText=jsonData[index].question;
+  
 }
 
 function previousQuestion(){
-  if(index === 1){
-    previousButton.classList.add("hidden");
-  }
-  if(index < jsonData.length){
-    finishButton.classList.add("hidden");
-    nextButton.classList.remove("hidden");
-  }
-  index--;
-  console.log(index);
-  question.innerText=jsonData[index].question;
+
 }
 
-quizButton.addEventListener("click", startQuiz);
-
-
+const questions = [
+  {
+    number: 1,
+    question: "Ce tip de masina cautati?",
+    type: "checkbox",
+    answers: [
+      {text: "berlina", image: "images/car icons/berlina.png"},
+      {text: "break", image: "images/car icons/break.png"},
+      {text: "coupe", image: "images/car icons/coupe.png"},
+      {text: "hatchback", image: "images/car icons/hatchback.png"},
+      {text: "suv", image: "images/car icons/suv.png"}
+    ]
+  },
+  {
+    number: 2,
+    question: "Masina noua sau second-hand?",
+    type: "checkbox",
+    answers: [
+      {text: "noua"},
+      {text: "second-hand"}
+    ]
+  },
+  {
+    number: 3,
+    question: "Care este bugetul dumneavoastra?",
+    type: "range",
+    answers: [
+      {text: "5000"},
+      {text: "150000"}
+    ]
+  },
+  {
+    number: 4,
+    question: "Ce motorizare doriti sa aiba masina?",
+    type: "checkbox",
+    answers: [
+      {text: "benzina"},
+      {text: "diesel"},
+      {text: "hybrid"},
+      {text: "electric"}
+    ]
+  },
+  {
+    number: 5,
+    question: "Anul fabricatiei?",
+    type: "range",
+    answers: [
+      {text: "1900"},
+      {text: "2023"}
+    ]
+  },
+  {
+    number: 6,
+    question: "Ce tip de cutie de viteze?",
+    type: "checkbox",
+    answers: [
+     {text: "automata"}, 
+     {text: "manuala"} 
+    ]
+  },
+  {
+    number: 7,
+    question: "Numarul de kilometri?",
+    type: "range",
+    answers: [
+      {text: "0"},
+      {text: "500000"}
+    ]
+    
+  },
+  {
+    number: 8,
+    question: "Puterea motorului?",
+    type: "range",
+    answers: [
+      {text: "50"},
+      {text: "500"}
+    ]
+  },
+  {
+    number: 9,
+    question: "Dimensiunea motorului?",
+    type: "range",
+    answers: [
+      {text: "500"},
+      {text: "5000"} 
+    ]
+  },
+  {
+    number: 10,
+    question: "Tara de origine?",
+    type: "checkbox",
+    answers: [
+      {text: "Germania"},
+      {text: "Romania"},
+      {text: "Franta"},
+      {text: "America"},
+      {text: "Japonia"},
+      {text: "altele"}
+    ]
+  }
+]
