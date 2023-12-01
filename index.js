@@ -1,19 +1,18 @@
-const text = document.getElementById("main-text");
-const quizButton = document.getElementById("main-button");
+const quizButton = document.getElementById("start-button");
 const nextButton = document.getElementById("next-button");
 const previousButton = document.getElementById("previous-button");
 const finishButton = document.getElementById("finish-button");
 const questionText = document.getElementById("question");
 const answersText = document.getElementById("answers");
 
+let questionIndex = 0;
+
 quizButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
-
-let questionIndex = 0;
+previousButton.addEventListener("click", previousQuestion);
 
 function startQuiz(){
   quizButton.classList.add("hidden");
-  text.classList.add("hidden");
   questionText.classList.remove("hidden");
   answersText.classList.remove("hidden");
   nextButton.classList.remove("hidden");
@@ -22,33 +21,58 @@ function startQuiz(){
 }
 
 function nextQuestion(){
-  if(questionIndex < questions.length){
-    questionText.innerText = questions[questionIndex].question;
-    answersText.innerHTML = "";
-  
-    questions[questionIndex].answers.forEach(answer => {
-      const input = document.createElement('input');
-      input.setAttribute("type", questions[questionIndex].type);
+  changeQuestion();
+  questionIndex++;
+  if(questionIndex >= questions.length){
+    nextButton.classList.add("hidden");
+    finishButton.classList.remove("hidden");
+  }
+}
 
-      const image = document.createElement('img');
-      if(answer.image){
-        image.src = answer.image;
-      }
-      
-      answersText.appendChild(input);
-      answersText.appendChild(image);
-      
-    })
-  
-    console.log(questions[questionIndex].answers.length);
-    questionIndex++;
-    console.log(questionIndex);
+function previousQuestion(){
+  questionIndex--;
+  changeQuestion();
+  if(questionIndex <= 0){
+    previousButton.classList.add("hidden");
+  }
+  if(questionIndex < questions.length){
+    nextButton.classList.remove("hidden");
+    finishButton.classList.add("hidden");
   }
   
 }
 
-function previousQuestion(){
+function changeQuestion(){
+  if(questionIndex < questions.length){
+    if(questionIndex >= 1){
+      previousButton.classList.remove("hidden");
+    }
+    answersText.innerHTML = "";
+    questionText.innerText =`${questions[questionIndex].number}.${questions[questionIndex].question}`;
 
+    questions[questionIndex].answers.forEach(answer => {
+      const input = document.createElement('input');
+      input.setAttribute("type", questions[questionIndex].type);
+      
+      if(questions[questionIndex].type === "number"){
+        input.setAttribute("min",answer.min);
+        input.setAttribute("max",answer.max);
+      }
+
+      const image = document.createElement('img');
+      const text = document.createElement('p');
+      if(answer.image){
+        image.src = answer.image;
+      }
+      if(answer.text){
+        text.innerText = answer.text;
+      }
+      answersText.appendChild(input);
+      answersText.appendChild(image);
+      answersText.appendChild(text);
+      
+    })
+  }
 }
 
 const questions = [
@@ -76,10 +100,10 @@ const questions = [
   {
     number: 3,
     question: "Care este bugetul dumneavoastra?",
-    type: "range",
+    type: "number",
     answers: [
-      {text: "5000"},
-      {text: "150000"}
+      {min: "5000", text: "5000"},
+      {max: "150000", text: "150000"}
     ]
   },
   {
@@ -96,10 +120,10 @@ const questions = [
   {
     number: 5,
     question: "Anul fabricatiei?",
-    type: "range",
+    type: "number",
     answers: [
-      {text: "1900"},
-      {text: "2023"}
+      {min: "1900", text:"1900"},
+      {max: "2023", text:"2023"}
     ]
   },
   {
@@ -114,29 +138,29 @@ const questions = [
   {
     number: 7,
     question: "Numarul de kilometri?",
-    type: "range",
+    type: "number",
     answers: [
-      {text: "0"},
-      {text: "500000"}
+      {min: "0", text:"0"},
+      {max: "500000", text:"500000"}
     ]
     
   },
   {
     number: 8,
     question: "Puterea motorului?",
-    type: "range",
+    type: "number",
     answers: [
-      {text: "50"},
-      {text: "500"}
+      {min: "50", text:"50"},
+      {max: "500", text:"500"}
     ]
   },
   {
     number: 9,
     question: "Dimensiunea motorului?",
-    type: "range",
+    type: "number",
     answers: [
-      {text: "500"},
-      {text: "5000"} 
+      {min: "500", text:"500"},
+      {max: "5000", text:"5000"} 
     ]
   },
   {

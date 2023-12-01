@@ -77,10 +77,6 @@ body{
   font-weight: 700;
 }
 
-#answers{
-  font-size: 2em;
-}
-
 #checkbox-answer{
   display: flex;
   flex-direction: column;
