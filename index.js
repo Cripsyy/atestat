@@ -1,32 +1,40 @@
+const initialDiv = document.getElementById("initial-div");
+const questionDiv = document.getElementById("question-div");
+const mainDiv = document.getElementById("main-div");
+const resultDiv = document.getElementById("result-div");
+
 const quizButton = document.getElementById("start-button");
 const nextButton = document.getElementById("next-button");
 const previousButton = document.getElementById("previous-button");
 const finishButton = document.getElementById("finish-button");
+
 const questionText = document.getElementById("question");
 const answersText = document.getElementById("answers");
+
 
 let questionIndex = 0;
 
 quizButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 previousButton.addEventListener("click", previousQuestion);
+finishButton.addEventListener("click", finishQuiz);
 
 function startQuiz(){
-  quizButton.classList.add("hidden");
+  initialDiv.classList.add("hidden");
   questionText.classList.remove("hidden");
-  answersText.classList.remove("hidden");
+  questionDiv.classList.remove("hidden");
   nextButton.classList.remove("hidden");
 
-  nextQuestion();
+  changeQuestion();
 }
 
 function nextQuestion(){
-  changeQuestion();
   questionIndex++;
-  if(questionIndex >= questions.length){
+  if(questionIndex >= questions.length - 1){
     nextButton.classList.add("hidden");
     finishButton.classList.remove("hidden");
   }
+  changeQuestion();
 }
 
 function previousQuestion(){
@@ -70,9 +78,14 @@ function changeQuestion(){
       answersText.appendChild(input);
       answersText.appendChild(image);
       answersText.appendChild(text);
-      
     })
   }
+}
+
+function finishQuiz(){
+  mainDiv.classList.add("hidden");
+  resultDiv.classList.remove("hidden");
+  console.log("text");
 }
 
 const questions = [

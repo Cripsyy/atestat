@@ -28,14 +28,24 @@
 
   <div id="home-main">
     <div id="main-div">
-      <p id="question" class="hidden"></p>
-      <div id="answers">
+      <div id="initial-div">
         <p id="main-text">Prin raspunsurile de la chestionarul de pe site puteti gasi o masina pentru cerintele dumneavostra</p>
-      </div>
       <button id="start-button" class="button">START</button>
-      <button id="next-button" class="button hidden">urmatoarea intrebare</button>
-      <button id="previous-button" class="button hidden">intrebarea anterioara</button>
-      <button id="finish-button" class="button hidden">termina chestionar</button>
+      </div>
+      <div id="question-div" class="hidden">
+        <p id="question"></p>
+        <div id="answers">
+
+        </div>
+        <button id="next-button" class="button hidden">NEXT</button>
+        <button id="previous-button" class="button hidden">PREVIOUS</button>
+        <button id="finish-button" class="button hidden">FINISH</button>
+      </div>
+    </div>
+    <div id="result-div" class="hidden">
+      <div id="result-1" class="result"></div>
+      <div id="result-2" class="result"></div>
+      <div id="result-3" class="result"></div>
     </div>
   </div>
 </body>
