@@ -83,9 +83,8 @@ function changeQuestion(){
 }
 
 function finishQuiz(){
-  mainDiv.classList.add("hidden");
-  resultDiv.classList.remove("hidden");
-  console.log("text");
+  mainDiv.style.display = "none";
+  resultDiv.style.display = "flex";
 }
 
 const questions = [
@@ -183,7 +182,7 @@ const questions = [
     answers: [
       {text: "Germania"},
       {text: "Romania"},
-      {text: "Franta"},
+      {text: "Korea"},
       {text: "America"},
       {text: "Japonia"},
       {text: "altele"}
