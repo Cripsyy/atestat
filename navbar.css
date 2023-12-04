@@ -1,0 +1,38 @@
+#nav-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px black;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  width: 250px;
+  height: 75px;
+}
+
+.logo-image{
+  height: 100%;
+}
+
+.logo-text{
+  font-size: 2rem;
+  color: white;
+}
+
+.nav-bar-button{
+  background-color: transparent;
+  color: white;
+  font-size: 2em; 
+  border: 0.5px white solid;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.nav-bar-button:hover{
+  background-color: rgba(128, 128, 128, 0.2);
+}
+.nav-bar-button:active{
+  background-color: rgba(128, 128, 128, 0.4);
+}
+

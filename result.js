@@ -23,7 +23,7 @@ const cars = [
   {
     number:2,
     name:"Dacia Logan",
-    type:"berlina",
+    type:"sedan",
     condition:"second-hand",
     price:6000,
     engine:"diesel",
@@ -151,7 +151,7 @@ const cars = [
   {
     number:10,
     name:"Volkswagen Arteon",
-    type:"berlina",
+    type:"sedan",
     condition:"second-hand",
     price:22500,
     engine:"benzina",
@@ -224,7 +224,7 @@ const cars = [
     power:,
     size:,
     country:"",
-    picutre:"",
+    picture:"",
     answers:0
   },
   {
@@ -239,7 +239,7 @@ const cars = [
     power:,
     size:,
     country:"",
-    picutre:"",
+    picture:"",
     answers:0
   },
   {
@@ -254,7 +254,7 @@ const cars = [
     power:,
     size:,
     country:"",
-    picutre:"",
+    picture:"",
     answers:0
   },
   {
@@ -269,7 +269,7 @@ const cars = [
     power:,
     size:,
     country:"",
-    picutre:"",
+    picture:"",
     answers:0
   },
 ]
