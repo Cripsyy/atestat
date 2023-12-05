@@ -2,10 +2,16 @@
 <html>
 <head>
   <title>Atestat</title>
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="navbar.css">
-  <script src="index.js" defer></script>
+
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+  <link rel="stylesheet" href="styles/result.css">
+
+  <script src="scripts/index.js" defer></script>
+  <script src="scripts/result.js" defer></script>
 </head>
+
 <body>
   <header id="nav-bar">
     <div class="logo">
@@ -45,25 +51,27 @@
       </div>
     </div>
     <div id="result-div" class="hidden">
-      <div id="result-1" class="result">
-        <img src="images/cars/honda-civic.jpg" class="result-photo">
-        <div class="result-div"></div>
-      </div>
-      <div id="result-2" class="result">
-        <img src="images/cars/honda-civic.jpg" class="result-photo">
-        <div class="result-div"></div>
-      </div>
-      <div id="result-3" class="result">
-        <img src="images/cars/honda-civic.jpg" class="result-photo">
-        <div class="result-div"></div>
+      <div id="results">
+        <div id="result-1" class="result">
+          <img src="images/cars/honda-civic.jpg" class="result-photo">
+          <div class="result-div"></div>
+        </div>
+        <div id="result-2" class="result">
+          <img src="images/cars/honda-civic.jpg" class="result-photo">
+          <div class="result-div"></div>
+        </div>
+        <div id="result-3" class="result">
+          <img src="images/cars/honda-civic.jpg" class="result-photo">
+          <div class="result-div"></div>
+        </div>
       </div>
       <a href="index.html">
-        <button>
+        <button class="restart-button">
           RESTART
         </button>
       </a>
       <a href="gallery.html">
-        <button>
+        <button class="gallery-button">
           GALLERY
         </button> 
       </a>

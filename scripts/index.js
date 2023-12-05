@@ -26,6 +26,7 @@ function startQuiz(){
   nextButton.classList.remove("hidden");
 
   changeQuestion();
+  gradientChange();
 }
 
 function changeQuestion(){
@@ -37,8 +38,7 @@ function changeQuestion(){
     questionText.innerText =`${questions[questionIndex].number}.${questions[questionIndex].question}`;
 
     questions[questionIndex].answers.forEach((answer, index) => {
-      const input = document.createElement('input');
-      input.setAttribute("type", questions[questionIndex].type);
+      const input = createInputElement(answer, index);
 
       input.addEventListener("input", ()=> {
         console.log(input.value);
@@ -50,37 +50,52 @@ function changeQuestion(){
           input.value = answer.max
         }
       });
+      
+      const image = createImageElement(answer);
+      const text = createTextElement(answer);
 
-      if(questions[questionIndex].type === "number"){
-        input.setAttribute("min",answer.min);
+      appendAnswers(input, image, text);
+    })
+  }
+}
+
+function createInputElement(answer, index){
+  const input = document.createElement("input");
+  input.setAttribute("type", questions[questionIndex].type);
+
+  if(questions[questionIndex].type === "number"){
+    input.setAttribute("min",answer.min);
         input.setAttribute("max",answer.max);
         if(index === 0){
           input.setAttribute("value",answer.min);
         }else{
           input.setAttribute("value",answer.max);
         }
-      }
-      
-
-      const image = document.createElement('img');
-      const text = document.createElement('p');
-
-      if(answer.image){
-        image.src = answer.image;
-      }
-      if(answer.text){
-        text.innerText = answer.text;
-      }
-
-      input.classList.add("answer-input");
-      image.classList.add("answer-image");
-      text.classList.add("answer-text");
-      
-      answersDiv.appendChild(input);
-      answersDiv.appendChild(image);
-      answersDiv.appendChild(text);
-    })
   }
+  input.classList.add("answer-input");
+  return input;
+}
+
+function createImageElement(answer) {
+  const image = document.createElement("img");
+  if (answer.image) {
+    image.src = answer.image;
+  }
+  image.classList.add("answer-image");
+  return image;
+}
+
+function createTextElement(answer) {
+  const text = document.createElement("p");
+  if (answer.text) {
+    text.innerText = answer.text;
+  }
+  text.classList.add("answer-text");
+  return text;
+}
+
+function appendAnswers(...elements) {
+  elements.forEach((element) => answersDiv.appendChild(element));
 }
 
 function nextQuestion(){
@@ -108,6 +123,21 @@ function finishQuiz(){
   mainDiv.classList.add("hidden");
   resultDiv.classList.remove("hidden");
 }
+
+function gradientChange(){
+  const body = document.body;
+  let angle = 180;
+
+  setInterval(() => {
+    angle++;
+    if(angle > 360){
+      angle = 0;
+    }
+    body.style.background = `rgba(0, 0, 0, 0) linear-gradient(${angle}deg, rgb(7, 87, 16) 0%, rgb(35, 194, 17) 100%) repeat scroll 0% 0% / auto padding-box border-box`
+  }, 20);
+}
+
+
 
 const questions = [
   {
