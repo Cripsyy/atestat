@@ -22,6 +22,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 90%;
 }
 
 #main-div{
@@ -30,9 +31,9 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px 15px;
-  background-color: white;
-  width: 700px;
-  height: 800px;
+  background-color: white;  
+  width: 33%;
+  height: 80%;
   border-radius: 10px;
   box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5);
   z-index: 100;
@@ -44,6 +45,14 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.answers{
+  display: none;
+}
+
+.answers.active{
+  display: block;
 }
 
 .question-input{
@@ -62,6 +71,7 @@ body{
   bottom: 2%;
   left: 5%;
 }
+
 
 
 

@@ -23,11 +23,10 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+body,html{
 	line-height: 1;
-}
-html{
   height: 100%;
+  overflow: hidden;
 }
 ol, ul {
 	list-style: none;

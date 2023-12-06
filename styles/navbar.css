@@ -23,11 +23,13 @@
 }
 
 .nav-bar-button{
+  text-decoration: none;
   cursor: pointer;
   background-color: transparent;
   border: none;
   color: rgb(36, 35, 35);
   font-size: 2rem; 
+  margin-right: 10px;
 }
 .nav-bar-button:hover{
   background-color: rgba(128, 128, 128, 0.2);

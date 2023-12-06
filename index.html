@@ -8,29 +8,22 @@
   <link rel="stylesheet" href="styles/navbar.css">
   <link rel="stylesheet" href="styles/result.css">
 
+  <script src="scripts/quiz.js" defer></script>
   <script src="scripts/index.js" defer></script>
-  <script src="scripts/result.js" defer></script>
 </head>
 
 <body>
   <header id="nav-bar">
     <div class="logo">
+      <a href="index.html" class=""></a>
       <img src="images/logo.png" class="logo-image">
       <p class="logo-text">QuizDrive</p>
     </div>
     <div>
-      <a href="index.html">
-        <button class="nav-bar-button">Home</button>
-      </a>
-      <a href="gallery.html">
-        <button class="nav-bar-button">Gallery</button>
-      </a>
-      <a href="about.html">
-        <button class="nav-bar-button">About</button>
-      </a>
-      <a href="contact.html">
-        <button class="nav-bar-button">Contact</button>
-      </a>
+      <a class="nav-bar-button" href="index.html">Home</a>
+      <a class="nav-bar-button" href="gallery.html">Gallery</a>
+      <a class="nav-bar-button" href="about.html">About</a>
+      <a class="nav-bar-button" href="contact.html">Contact</a>
     </div>  
   </header>
 
@@ -41,10 +34,96 @@
         <button id="start-button" class="button">START</button>
       </div>
       <div id="question-div" class="hidden">
-        <p id="question"></p>
-        <div id="answers">
-
-        </div>
+        <form>
+          <div class="answers active">
+            <p class="question">niga</p>
+            <label for="sedan">sedan</label>
+            <input type="checkbox" name="sedan">
+            <label for="break"></label>
+            <input type="checkbox" name="break">
+            <label for="coupe"></label>
+            <input type="checkbox" name="coupe">
+            <label for="hatchback"></label>
+            <input type="checkbox" name="hatchback">
+            <label for="suv"></label>
+            <input type="checkbox" name="suv">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="noua"></label>
+            <input type="checkbox" name="noua">
+            <label for="second-hand"></label>
+            <input type="checkbox" name="second-hand">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="min-price"></label>
+            <input type="number" name="min-price" min="0" max="150000" value="0">
+            <label for="max-price"></label>
+            <input type="number" name="max-price" min="0" max="150000" value="0">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="benzina"></label>
+            <input type="checkbox" name="benzina">
+            <label for="diesel"></label>
+            <input type="checkbox" name="diesel">
+            <label for="hibrid"></label>
+            <input type="checkbox" name="hibrid">
+            <label for="electric"></label>
+            <input type="checkbox" name="electric">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="min-year"></label>
+            <input type="number" name="min-year" min="1900" max="2023">
+            <label for="max-year"></label>
+            <input type="number" name="max-year" min="1900" max="2023">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="automata"></label>
+            <input type="checkbox" name="automata">
+            <label for="manuala"></label>
+            <input type="checkbox" name="manuala">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="min-km"></label>
+            <input type="number" name="min-km" min="0" max="500000">
+            <label for="max-km"></label>
+            <input type="number" name="max-km" min="0" max="500000">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="min-hp"></label>
+            <input type="number" name="min-hp" min="40" max="600">
+            <label for="max-hp"></label>
+            <input type="number" name="max-hp" min="40" max="600">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="min-capacity"></label>
+            <input type="number" name="min-capacity" min="500" max="5000">
+            <label for="max-capacity"></label>
+            <input type="number" name="max-capacity" min="500" max="5000">
+          </div>
+          <div class="answers">
+            <p class="question"></p>
+            <label for="romania"></label>
+            <input type="checkbox" name="romania">
+            <label for="germania"></label>
+            <input type="checkbox" name="germania">
+            <label for="america"></label>
+            <input type="checkbox" name="america">
+            <label for="japonia"></label>
+            <input type="checkbox" name="japonia">
+            <label for="korea"></label>
+            <input type="checkbox" name="korea">
+            <label for="altele"></label>
+            <input type="checkbox" name="altele">
+          </div>
+        </form>
         <button id="next-button" class="button hidden">NEXT</button>
         <button id="previous-button" class="button hidden">PREVIOUS</button>
         <button id="finish-button" class="button hidden">FINISH</button>
@@ -53,29 +132,20 @@
     <div id="result-div" class="hidden">
       <div id="results">
         <div id="result-1" class="result">
-          <img src="images/cars/honda-civic.jpg" class="result-photo">
+          <img src="images/cars/volkswagen-arteon.jpg" class="result-photo">
           <div class="result-div"></div>
         </div>
         <div id="result-2" class="result">
-          <img src="images/cars/honda-civic.jpg" class="result-photo">
+          <img src="images/cars/toyota-corolla.jpg" class="result-photo">
           <div class="result-div"></div>
         </div>
         <div id="result-3" class="result">
-          <img src="images/cars/honda-civic.jpg" class="result-photo">
+          <img src="images/cars/mercedes-cla.jpg" class="result-photo">
           <div class="result-div"></div>
         </div>
       </div>
-      <a href="index.html">
-        <button class="restart-button">
-          RESTART
-        </button>
-      </a>
-      <a href="gallery.html">
-        <button class="gallery-button">
-          GALLERY
-        </button> 
-      </a>
-      
+        <a class="restart-button" href="index.html">RESTART</a>
+        <a class="gallery-button" href="gallery.html">GALLERY</a> 
     </div>
   </div>
 </body>
