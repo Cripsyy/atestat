@@ -7,8 +7,6 @@
 }
 
 .logo{
-  display: flex;
-  align-items: center;
   width: 250px;
   height: 75px;
 }
@@ -22,11 +20,20 @@
   color: rgb(36, 35, 35);
 }
 
-.nav-bar-button{
+.logo-button{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-bar-button,
+.logo-button{
   text-decoration: none;
   cursor: pointer;
   background-color: transparent;
   border: none;
+}
+.nav-bar-button{
   color: rgb(36, 35, 35);
   font-size: 2rem; 
   margin-right: 10px;

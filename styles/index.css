@@ -52,7 +52,10 @@ body{
 }
 
 .answers.active{
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: column;
 }
 
 .question-input{
