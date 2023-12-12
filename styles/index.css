@@ -32,8 +32,8 @@ body{
   align-items: center;
   padding: 10px 15px;
   background-color: white;  
-  width: 33%;
-  height: 80%;
+  width: clamp(300px, 600px, 900px);
+  height: clamp(350px ,700px, 1050px);
   border-radius: 10px;
   box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5);
   z-index: 100;
@@ -45,6 +45,11 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+#question-div{
+  width: 80%;
 }
 
 .answers{
@@ -56,6 +61,15 @@ body{
   align-items: center;
   justify-content: left;
   flex-direction: column;
+  width: 100%;
+}
+
+.answers-option{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .question-input{

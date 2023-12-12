@@ -38,91 +38,160 @@
         <form>
           <div class="answers active">
             <p class="question">1.Ce tip de masina doriti?</p>
-            <label for="sedan">sedan</label>
-            <input type="checkbox" name="sedan">
-            <label for="break">break</label>
-            <input type="checkbox" name="break">
-            <label for="coupe">coupe</label>
-            <input type="checkbox" name="coupe">
-            <label for="hatchback">hatchback</label>
-            <input type="checkbox" name="hatchback">
-            <label for="suv">suv</label>
-            <input type="checkbox" name="suv">
+            <div class="answers-option">
+              <label for="sedan">sedan</label>
+              <img src="images/car icons/sedan.png">
+              <input type="checkbox" name="sedan">
+            </div>
+            <div class="answers-option">
+              <label for="break">break</label>
+              <img src="images/car icons/break.png">
+              <input type="checkbox" name="break">  
+            </div>
+            <div class="answers-option">
+              <label for="coupe">coupe</label>
+              <img src="images/car icons/coupe.png">
+              <input type="checkbox" name="coupe">
+            </div>
+            <div class="answers-option">
+              <label for="hatchback">hatchback</label>
+              <img src="images/car icons/hatchback.png">
+              <input type="checkbox" name="hatchback">
+            </div>
+            <div class="answers-option">
+              <label for="suv">suv</label>
+              <img src="images/car icons/suv.png">
+              <input type="checkbox" name="suv">
+            </div>
           </div>
           <div class="answers">
             <p class="question">2.Masina noua sau second-hand?</p>
-            <label for="noua">noua</label>
-            <input type="checkbox" name="noua">
-            <label for="second-hand">second-hand</label>
-            <input type="checkbox" name="second-hand">
+            <div class="answers-option">
+              <label for="noua">noua</label>
+              <input type="checkbox" name="noua">
+            </div>
+            <div class="answers-option">
+              <label for="second-hand">second-hand</label>
+              <input type="checkbox" name="second-hand">
+            </div>
           </div>
           <div class="answers">
             <p class="question">3.Bugetul dumneavostra?</p>
-            <label for="min-price">0</label>
-            <input type="number" name="min-price" min="0" max="150000" value="0">
-            <label for="max-price">150000</label>
-            <input type="number" name="max-price" min="0" max="150000" value="0">
+            <div class="answers-option">
+              <label for="min-price">Min-0</label>
+              <input type="number" name="min-price" min="0" max="150000">
+            </div>
+            <div class="answers-option">
+              <label for="max-price">Max-150000</label>
+              <input type="number" name="max-price" id="max-price" min="0" max="150000">
+            </div>
           </div>
           <div class="answers">
             <p class="question">4.Ce tip de motorizare doriti?</p>
-            <label for="benzina">benzina</label>
-            <input type="checkbox" name="benzina">
-            <label for="diesel">diesel</label>
-            <input type="checkbox" name="diesel">
-            <label for="hibrid">hibrid</label>
-            <input type="checkbox" name="hibrid">
-            <label for="electric">electric</label>
-            <input type="checkbox" name="electric">
+            <div class="answers-option">
+              <label for="benzina">benzina</label>
+              <input type="checkbox" name="benzina">
+            </div>
+            <div class="answers-option">
+              <label for="diesel">diesel</label>
+              <input type="checkbox" name="diesel">
+            </div>
+            <div class="answers-option">
+              <label for="hibrid">hibrid</label>
+              <input type="checkbox" name="hibrid">
+            </div>
+            <div class="answers-option">
+              <label for="electric">electric</label>
+              <input type="checkbox" name="electric">
+            </div>
           </div>
           <div class="answers">
             <p class="question">5.Anul de fabricatie?</p>
-            <label for="min-year">1900</label>
-            <input type="number" name="min-year" min="1900" max="2023">
-            <label for="max-year">2023</label>
-            <input type="number" name="max-year" min="1900" max="2023">
+            <div class="answers-option">
+              <label for="min-year">Min-1900</label>
+              <input type="number" name="min-year" min="1900" max="2023">
+            </div>
+            <div class="answers-option">
+              <label for="max-year">Max-2023</label>
+              <input type="number" name="max-year" min="1900" max="2023">
+            </div>
           </div>
           <div class="answers">
             <p class="question">6.Tipul cutiei de viteza?</p>
-            <label for="automata">automata</label>
-            <input type="checkbox" name="automata">
-            <label for="manuala">manuala</label>
-            <input type="checkbox" name="manuala">
+            <div class="answers-option">
+              <label for="automata">automata</label>
+              <input type="checkbox" name="automata">
+            </div>
+            <div class="answers-option">
+              <label for="manuala">manuala</label>
+              <input type="checkbox" name="manuala">
+            </div>
           </div>
           <div class="answers">
             <p class="question">7.Numarul de kilometri?</p>
-            <label for="min-km">0</label>
-            <input type="number" name="min-km" min="0" max="500000">
-            <label for="max-km">500000</label>
-            <input type="number" name="max-km" min="0" max="500000">
+            <div class="answers-option">
+              <label for="min-km">min-0</label>
+              <input type="number" name="min-km" min="0" max="500000">
+            </div>
+            <div class="answers-option">
+              <label for="max-km">max-500000</label>
+              <input type="number" name="max-km" min="0" max="500000">
+            </div>
           </div>
           <div class="answers">
             <p class="question">8.Puterea motorului?</p>
-            <label for="min-hp">40</label>
-            <input type="number" name="min-hp" min="40" max="600">
-            <label for="max-hp">600</label>
-            <input type="number" name="max-hp" min="40" max="600">
+            <div class="answers-option">
+              <label for="min-hp">min-40</label>
+              <input type="number" name="min-hp" min="40" max="600">
+            </div>
+            <div class="answers-option">
+              <label for="max-hp">max-600</label>
+              <input type="number" name="max-hp" min="40" max="600">
+            </div>
           </div>
           <div class="answers">
             <p class="question">9.Capacitatea motorului?</p>
-            <label for="min-capacity">500</label>
-            <input type="number" name="min-capacity" min="500" max="5000">
-            <label for="max-capacity">5000</label>
-            <input type="number" name="max-capacity" min="500" max="5000">
+            <div class="answers-option">
+              <label for="min-capacity">min-500</label>
+              <input type="number" name="min-capacity" min="500" max="5000">
+            </div>
+            <div class="answers-option">
+              <label for="max-capacity">max-5000</label>
+              <input type="number" name="max-capacity" min="500" max="5000">
+            </div>
           </div>
           <div class="answers">
             <p class="question">10.Tara de origine?</p>
-            <label for="romania">Romania</label>
-            <input type="checkbox" name="romania">
-            <label for="germania">Germania</label>
-            <input type="checkbox" name="germania">
-            <label for="america">America</label>
-            <input type="checkbox" name="america">
-            <label for="japonia">japonia</label>
-            <input type="checkbox" name="japonia">
-            <label for="korea">Korea</label>
-            <input type="checkbox" name="korea">
-            <label for="altele">Altele</label>
-            <input type="checkbox" name="altele">
+            <div class="answers-option">
+              <label for="romania">Romania</label>
+              <img src="images/flags/Romania.png">
+              <input type="checkbox" name="romania">
+            </div>
+            <div class="answers-option">
+              <label for="germania">Germania</label>
+              <img src="images/flags/Germania.png">
+              <input type="checkbox" name="germania">
+            </div>
+            <div class="answers-option">
+              <label for="america">America</label>
+              <img src="images/flags/America.png">
+              <input type="checkbox" name="america">
+            </div>
+            <div class="answers-option">
+              <label for="japonia">japonia</label>
+              <img src="images/flags/Japonia.png">
+              <input type="checkbox" name="japonia">
+            </div>
+            <div class="answers-option">
+              <label for="korea">Korea</label>
+              <img src="images/flags/Korea.png">
+              <input type="checkbox" name="korea">
+            </div>
+            <div class="answers-option">
+              <label for="altele">Altele</label>
+              <img src="images/flags/altele.png">
+              <input type="checkbox" name="altele">
+            </div>
           </div>
         </form>
         <button id="next-button" class="button hidden">NEXT</button>
@@ -134,19 +203,63 @@
       <div id="results">
         <div id="result-1" class="result">
           <img src="images/cars/volkswagen-arteon.jpg" class="result-photo">
-          <div class="result-div"></div>
+          <div class="result-div">
+            <p class="title">Volkswagen Arteon</p>
+            <div class="specs">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+              <p>6</p>
+              <p>7</p>
+              <p>8</p>
+              <p>9</p>
+              <p>10</p>
+            </div>
+          </div>
         </div>
         <div id="result-2" class="result">
           <img src="images/cars/toyota-corolla.jpg" class="result-photo">
-          <div class="result-div"></div>
+          <div class="result-div">
+            <p class="title">Toyota Corolla</p>
+            <div class="specs">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+              <p>6</p>
+              <p>7</p>
+              <p>8</p>
+              <p>9</p>
+              <p>10</p>
+            </div>
+          </div>
         </div>
         <div id="result-3" class="result">
           <img src="images/cars/mercedes-cla.jpg" class="result-photo">
-          <div class="result-div"></div>
+          <div class="result-div">
+            <p class="title">Mercedes CLA</p>
+            <div class="specs">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+              <p>6</p>
+              <p>7</p>
+              <p>8</p>
+              <p>9</p>
+              <p>10</p>
+            </div>
+          </div>
         </div>
       </div>
+      <div id="result-buttons">
         <a class="restart-button" href="index.html">RESTART</a>
         <a class="gallery-button" href="gallery.html">GALLERY</a> 
+      </div>
     </div>
   </div>
 </body>

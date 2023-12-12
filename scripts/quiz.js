@@ -1,6 +1,6 @@
 const answers = Array.from(document.querySelectorAll("form .answers"));
 const form = document.querySelector("form");
-const quizButton = document.getElementById("start-button");
+const startButton = document.getElementById("start-button");
 const nextButton = document.getElementById("next-button");
 const previousButton = document.getElementById("previous-button");
 const finishButton = document.getElementById("finish-button");
@@ -9,11 +9,11 @@ const mainDiv = document.getElementById("main-div");
 const resultDiv = document.getElementById("result-div");
 const questionDiv = document.getElementById("question-div");
 
-
-quizButton.addEventListener("click", startQuiz);
+startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 previousButton.addEventListener("click", previousQuestion);
 finishButton.addEventListener("click", finishQuiz);
+
 
 function startQuiz(){
   initialDiv.classList.add("hidden");
@@ -25,11 +25,6 @@ function changeQuestion(button){
   let index = 0;
   const active = document.querySelector(".active");
   index = answers.indexOf(active);
-  if(index < answers.length){
-    if(index >= 0){
-      previousButton.classList.remove("hidden");
-    }
-  }
   answers[index].classList.remove("active");
   if (button === "next") {
     index++;
@@ -38,25 +33,59 @@ function changeQuestion(button){
   }
   answers[index].classList.add("active");
 
-  console.log(index);
-  console.log(answers.length - 1 <= index);
+  //make previous button appear from the second option
+  if(index >= 0){
+    previousButton.classList.remove("hidden");
+  }
+  //make finish button appear at the last question
   if(index === answers.length - 1){
     nextButton.classList.add("hidden");
     finishButton.classList.remove("hidden");
   }
-
+  //make previous button disappear from the second option
   if(index <= 0){
     previousButton.classList.add("hidden");
   }
+  //make next button appear if you return from the last question
   if(index < answers.length - 1){
     nextButton.classList.remove("hidden");
     finishButton.classList.add("hidden");
   }
 }
 
-function nextQuestion(){
+function nextQuestion() {
+
+  let firstInput, secondInput;
+
+  let isMinInput, isMaxInput;
+
+  form.querySelectorAll(".active input").forEach((input) => {
+  
+    isMinInput = input.name.includes("min");
+    isMaxInput = input.name.includes("max");
+
+    if(input.type === "number"){
+      if (isMinInput) {
+        firstInput = input;
+      } else if (isMaxInput) {
+        secondInput = input;
+      }
+    }
+  });
+
+  if (firstInput && secondInput){
+    if(Number(firstInput.value) > Number(secondInput.value)){
+      firstInput.value = "";
+      secondInput.value = "";
+      alert("Valori indisponibile");
+      return;
+    }
+
+  }
+  
   changeQuestion("next");
 }
+
 
 function previousQuestion(){
   changeQuestion("prev");
@@ -71,7 +100,19 @@ function finishQuiz(){
     if(input.type === "checkbox"){
       value = input.checked;
       inputs.push({name, value});
-    }else{
+    }else if(input.type === "number"){
+      const minInput = input.name.includes("min");
+      const maxInput = input.name.includes("max");
+      if(minInput){
+        if(Number(value) < Number(input.min) || Number(value) > Number(input.max) ||value === ""){
+          value = input.min;
+        }
+      }
+      if(maxInput){
+        if(Number(value) < Number(input.min) || Number(value) > Number(input.max) ||value === ""){
+          value = input.max;
+        }
+      }
       inputs.push({ name, value });
     }
   });

@@ -12,6 +12,12 @@
   box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5)
 }
 
+#result-buttons{
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+}
+
 .result-photo{
   width: 100%;
   height: 50%;
