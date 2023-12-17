@@ -91,8 +91,6 @@ function previousQuestion(){
   changeQuestion("prev");
 }
 
-const inputs = [];
-
 function finishQuiz(){
   
   form.querySelectorAll("input").forEach((input) => {
@@ -116,22 +114,101 @@ function finishQuiz(){
       inputs.push({ name, value });
     }
   });
-  console.log(inputs);
   form.reset();
+  console.log(inputs);
 
-  mainDiv.classList.add("hidden");
-  resultDiv.classList.remove("hidden");
+  showResult();
 }
 
+const inputs = [];
+
+function calculateResults(bestResults = []){
+  let carsIndex, inputsIndex;
+  let minValue, maxValue;
+  for(inputsIndex = 0; inputsIndex < inputs.length; inputsIndex++){ 
+    for(carsIndex = 0; carsIndex < cars.length; carsIndex++){
+      if(inputs[inputsIndex].value === true){
+        if(cars[carsIndex].type === inputs[inputsIndex].name){
+          cars[carsIndex].points += 2;
+        }
+        if(cars[carsIndex].condition === inputs[inputsIndex].name){
+          cars[carsIndex].points += 2;
+        }
+        if(cars[carsIndex].engine === inputs[inputsIndex].name){
+          cars[carsIndex].points += 2;
+        }
+        if(cars[carsIndex].gearbox === inputs[inputsIndex].name){
+          cars[carsIndex].points += 2;
+        }
+        if(cars[carsIndex].country === inputs[inputsIndex].name){
+          cars[carsIndex].points++;
+        }
+      }
+      if(inputs[inputsIndex].value !== true && inputs[inputsIndex].value !== false){
+        if(inputs[inputsIndex].name.includes("min")){
+          minValue = inputs[inputsIndex].value;
+        }else if(inputs[inputsIndex].name.includes("max")){
+          maxValue = inputs[inputsIndex].value;
+        }
+        if(inputs[inputsIndex].name.includes("price")){
+          if(minValue < cars[carsIndex].price < maxValue){
+            cars[carsIndex].points += 3;
+          }
+        }
+        if(inputs[inputsIndex].name.includes("year")){
+          if(minValue < cars[carsIndex].year < maxValue){
+            cars[carsIndex].points += 2;
+          }
+        }
+        if(inputs[inputsIndex].name.includes("mileage")){
+          if(minValue < cars[carsIndex].mileage < maxValue){
+            cars[carsIndex].points ++;
+          }
+        }
+        if(inputs[inputsIndex].name.includes("power")){
+          if(minValue < cars[carsIndex].power < maxValue){
+            cars[carsIndex].points ++;
+          }
+        }
+        if(inputs[inputsIndex].name.includes("size")){
+          if(minValue < cars[carsIndex].size < maxValue){
+            cars[carsIndex].points ++;
+          }
+        }
+
+      }
+      minValue = 0;
+      maxValue = 0; 
+    }
+  }
+  cars.sort((a,b) => a.points - b.points);
+  for (carsIndex = 0; carsIndex < cars.length; carsIndex++) {
+    console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
+  }
+  for(carsIndex = cars.length - 1; carsIndex >= (cars.length-3); carsIndex--){
+    console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
+    bestResults.push(cars[carsIndex].number);
+  }
+  return bestResults;
+}
+
+function showResult(){
+  mainDiv.classList.add("hidden");
+  resultDiv.classList.remove("hidden");
+  let bestResults = [];
+  calculateResults(bestResults);
+  
+  console.log(bestResults);
+}
 
 const cars = [
   {
     number:1,
     name:"Honda Civic",
     type:"hatchback",
-    condition:"new",
+    condition:"noua",
     price:35000,
-    engine:"hybrid",
+    engine:"hibrid",
     year:2023,
     gearbox:"automata",
     mileage:0,
@@ -139,7 +216,7 @@ const cars = [
     size:1993,
     country:"Japonia",
     picture:"images/cars/honda-civic.jpg",
-    answers:0
+    points:0
   },
   {
     number:2,
@@ -155,7 +232,7 @@ const cars = [
     size:1461,
     country:"Romania",
     picture:"images/cars/dacia-logan.jpg",
-    answers:0
+    points:0
   },
   {
     number:3,
@@ -171,7 +248,7 @@ const cars = [
     size:1498,
     country:"America",
     picture:"images/cars/ford-focus.jpg",
-    answers:0
+    points:0
   },
   {
     number:4,
@@ -187,7 +264,7 @@ const cars = [
     size:1598,
     country:"Germania",
     picture:"images/cars/volkswagen-golf.jpg",
-    answers:0
+    points:0
   },
   {
     number:5,
@@ -203,7 +280,7 @@ const cars = [
     size:1995,
     country:"Germania",
     picture:"images/cars/bmw-seria-3.jpg",
-    answers:0
+    points:0
   },
   {
     number:6,
@@ -219,7 +296,7 @@ const cars = [
     size:2993,
     country:"altele",
     picture:"images/cars/range-rover.jpg",
-    answers:0
+    points:0
   },
   {
     number:7,
@@ -235,7 +312,7 @@ const cars = [
     size:2191,
     country:"Japonia",
     picture:"images/cars/mazda-cx-5.jpg",
-    answers:0
+    points:0
   },
   {
     number:8,
@@ -251,7 +328,7 @@ const cars = [
     size:1968,
     country:"Germania",
     picture:"images/cars/volkswagen-passat.jpg",
-    answers:0
+    points:0
   },
   {
     number:9,
@@ -261,13 +338,13 @@ const cars = [
     price:3500,
     engine:"benzina",
     year:2006,
-    gearbox:"manual",
+    gearbox:"manuala",
     mileage:170000,
     power:77,
     size:1368,
     country:"altele",
     picture:"images/cars/fiat-punto.jpg",
-    answers:0
+    points:0
   },
   {
     number:10,
@@ -283,7 +360,7 @@ const cars = [
     size:1984,
     country:"Germania",
     picture:"images/cars/volkswagen-arteon.jpg",
-    answers:0
+    points:0
   },
   {
     number:11,
@@ -299,7 +376,7 @@ const cars = [
     size:5461,
     country:"Germania",
     picture:"images/cars/mercedes-g-class.jpg",
-    answers:0
+    points:0
   },
   {
     number:12,
@@ -315,7 +392,7 @@ const cars = [
     size:1984,
     country:"Germania",
     picture:"images/cars/audi-tt.jpg",
-    answers:0
+    points:0
   },
   {
     number:13,
@@ -331,7 +408,7 @@ const cars = [
     size:998,
     country:"Korea",
     picture:"images/cars/hyundai-i30.jpg",
-    answers:0
+    points:0
   },
   {
     number:14,
@@ -347,7 +424,7 @@ const cars = [
     size:1600,
     country:"altele",
     picture:"images/cars/seat-altea.jpg",
-    answers:0
+    points:0
   },
   {
     number:15,
@@ -363,7 +440,7 @@ const cars = [
     size:1984,
     country:"altele",
     picture:"images/cars/skoda-kodiaq.jpg",
-    answers:0
+    points:0
   },
   {
     number:16,
@@ -379,7 +456,7 @@ const cars = [
     size:1969,
     country:"altele",
     picture:"images/cars/volvo-xc60.jpg",
-    answers:0
+    points:0
   },
   {
     number:17,
@@ -395,7 +472,7 @@ const cars = [
     size:1798,
     country:"Japonia",
     picture:"images/cars/toyota-corolla.jpg",
-    answers:0
+    points:0
   },
   {
     number:18,
@@ -411,13 +488,13 @@ const cars = [
     size:2498,
     country:"America",
     picture:"images/cars/ford-kuga.jpg",
-    answers:0
+    points:0
   },
   {
     number:19,
     name:"Audi A4",
     type:"sedan",
-    condition:"nou",
+    condition:"noua",
     price:31500,
     engine:"benzina",
     year:2023,
@@ -427,13 +504,13 @@ const cars = [
     size:1984,
     country:"Germania",
     picture:"images/cars/audi-a4.jpg",
-    answers:0
+    points:0
   },
   {
     number:20,
     name:"Hyundai Bayon",
     type:"suv",
-    condition:"nou",
+    condition:"noua",
     price:18000,
     engine:"benzina",
     year:2023,
@@ -443,13 +520,13 @@ const cars = [
     size:998,
     country:"Korea",
     picture:"images/cars/hyundai-bayon.jpg",
-    answers:0
+    points:0
   },
   {
     number:21,
     name:"Mercedes-Benz CLA",
     type:"coupe",
-    condition:"nou",
+    condition:"noua",
     price:48000,
     engine:"benzina",
     year:2023,
@@ -459,13 +536,13 @@ const cars = [
     size:1332,
     country:"Germania",
     picture:"images/cars/mercedes-cla.jpg",
-    answers:0
+    points:0
   },
   {
     number:22,
     name:"Tesla Model Y",
     type:"suv",
-    condition:"nou",
+    condition:"noua",
     price:46500,
     engine:"electric",
     year:2023,
@@ -475,13 +552,13 @@ const cars = [
     size:null,
     country:"America",
     picture:"images/cars/tesla-model-y.jpg",
-    answers:0
+    points:0
   },
   {
     number:23,
     name:"Ford Mustang Mach-E",
     type:"suv",
-    condition:"nou",
+    condition:"noua",
     price:50000,
     engine:"electric",
     year:2023,
@@ -491,7 +568,7 @@ const cars = [
     size:null,
     country:"America",
     picture:"images/cars/ford-mustang-mach-e.jpg",
-    answers:0
+    points:0
   },
   {
     number:24,
@@ -507,7 +584,7 @@ const cars = [
     size:null,
     country:"Romania",
     picture:"images/cars/dacia-spring.jpg",
-    answers:0
+    points:0
   },
   {
     number:25,
@@ -523,6 +600,6 @@ const cars = [
     size:null,
     country:"altele",
     picture:"images/cars/mini-copper.jpg",
-    answers:0
+    points:0
   },
 ]
