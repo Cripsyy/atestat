@@ -187,17 +187,29 @@ function calculateResults(bestResults = []){
   }
   for(carsIndex = cars.length - 1; carsIndex >= (cars.length-3); carsIndex--){
     console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
-    bestResults.push(cars[carsIndex].number);
+    bestResults.push(cars[carsIndex]);
   }
   return bestResults;
 }
 
+
+
 function showResult(){
   mainDiv.classList.add("hidden");
   resultDiv.classList.remove("hidden");
+
+  const results = document.getElementById("results");
+
   let bestResults = [];
+
   calculateResults(bestResults);
-  
+
+  results.querySelectorAll(".result").forEach((result) =>{
+    console.log("trebuie sa fie 3");
+    const image = result.querySelector(".result-photo");
+    image.src = bestResults[1].image;
+  });
+
   console.log(bestResults);
 }
 
@@ -600,6 +612,246 @@ const cars = [
     size:null,
     country:"altele",
     picture:"images/cars/mini-copper.jpg",
+    points:0
+  },
+  {
+    number:26,
+    name:"Subaru BRZ",
+    type:"coupe",
+    condition:"second-hand",
+    price:22500,
+    engine:"benzina",
+    year:2017,
+    gearbox:"manuala",
+    mileage:50000,
+    power:200,
+    size:1998,
+    country:"Japonia",
+    picture:"images/cars/subaru-brz.jpg",
+    points:0
+  },
+  {
+    number:27,
+    name:"BMW M2",
+    type:"coupe",
+    condition:"noua",
+    price:63000,
+    engine:"benzina",
+    year:2023,
+    gearbox:"automata",
+    mileage:0,
+    power:460,
+    size:2993,
+    country:"Germania",
+    picture:"images/cars/bmw-m2.jpg",
+    points:0
+  },
+  {
+    number:28,
+    name:"Toyota Supra",
+    type:"coupe",
+    condition:"second-hand",
+    price:50000,
+    engine:"benzina",
+    year:2023,
+    gearbox:"automata",
+    mileage:19000,
+    power:340,
+    size:2998,
+    country:"Japonia",
+    picture:"images/cars/toyota-supra.jpg",
+    points:0
+  },
+  {
+    number:29,
+    name:"Porsche Cayman",
+    type:"coupe",
+    condition:"second-hand",
+    price:30000,
+    engine:"benzina",
+    year:2014,
+    gearbox:"automata",
+    mileage:50000,
+    power:275,
+    size:2706,
+    country:"Germania",
+    picture:"images/cars/porsche-cayman.jpg",
+    points:0
+  },
+  {
+    number:30,
+    name:"Peugeout RCZ",
+    type:"coupe",
+    condition:"second-hand",
+    price:10000,
+    engine:"benzina",
+    year:2011,
+    gearbox:"manuala",
+    mileage:137000,
+    power:200,
+    size:1598,
+    country:"altele",
+    picture:"images/cars/peugeout-rcz.jpg",
+    points:0
+  },
+  {
+    number:31,
+    name:"Peugeout 508",
+    type:"break",
+    condition:"second-hand",
+    price:10500,
+    engine:"hibrid",
+    year:2014,
+    gearbox:"automata",
+    mileage:195000,
+    power:163,
+    size:1997,
+    country:"altele",
+    picture:"images/cars/peugeout-508.jpg",
+    points:0
+  },
+  {
+    number:32,
+    name:"Skoda Fabia",
+    type:"break",
+    condition:"second-hand",
+    price:4200,
+    engine:"diesel",
+    year:2012,
+    gearbox:"manuala",
+    mileage:227000,
+    power:75,
+    size:1199,
+    country:"altele",
+    picture:"images/cars/skoda-fabia.jpg",
+    points:0
+  },
+  {
+    number:33,
+    name:"Ford Focus",
+    type:"break",
+    condition:"noua",
+    price:21000,
+    engine:"benzina",
+    year:2023,
+    gearbox:"manuala",
+    mileage:0,
+    power:125,
+    size:999,
+    country:"America",
+    picture:"images/cars/ford-focus-break.jpg",
+    points:0
+  },
+  {
+    number:34,
+    name:"Chevrolet Malibu",
+    type:"sedan",
+    condition:"second-hand",
+    price:7500,
+    engine:"diesel",
+    year:2012,
+    gearbox:"automata",
+    mileage:180000,
+    power:160,
+    size:1956,
+    country:"America",
+    picture:"images/cars/chevrolet-malibu.jpg",
+    points:0
+  },
+  {
+    number:35,
+    name:"Mercedes-Benz CLK",
+    type:"coupe",
+    condition:"second-hand",
+    price:4500,
+    engine:"benzina",
+    year:2000,
+    gearbox:"automata",
+    mileage:175000,
+    power:137,
+    size:1998,
+    country:"Germania",
+    picture:"images/cars/mercedes-clk.jpg",
+    points:0
+  },
+  {
+    number:36,
+    name:"Dacia 1300",
+    type:"sedan",
+    condition:"second-hand",
+    price:3700,
+    engine:"benzina",
+    year:1977,
+    gearbox:"manuala",
+    mileage:9200,
+    power:54,
+    size:1300,
+    country:"Romania",
+    picture:"images/cars/dacia-1300.jpg",
+    points:0
+  },
+  {
+    number:37,
+    name:"Mitsubishi 3000 GT",
+    type:"coupe",
+    condition:"second-hand",
+    price:13500,
+    engine:"benzina",
+    year:1997,
+    gearbox:"manuala",
+    mileage:110000,
+    power:286,
+    size:2972,
+    country:"Japonia",
+    picture:"images/cars/mitsubishi-3000.jpg",
+    points:0
+  },
+  {
+    number:38,
+    name:"Audi A3",
+    type:"sedan",
+    condition:"second-hand",
+    price:28500,
+    engine:"diesel",
+    year:2019,
+    gearbox:"automata",
+    mileage:72000,
+    power:184,
+    size:1968,
+    country:"Germania",
+    picture:"images/cars/audi-a3.jpg",
+    points:0
+  },
+  {
+    number:39,
+    name:"Opel Corsa e",
+    type:"hatchback",
+    condition:"noua",
+    price:21000,
+    engine:"electric",
+    year:2022,
+    gearbox:"automata",
+    mileage:0,
+    power:136,
+    size:null,
+    country:"Germania",
+    picture:"images/cars/opel-corsa-e.jpg",
+    points:0
+  },
+  {
+    number:40,
+    name:"Kia Sportage",
+    type:"suv",
+    condition:"second-hand",
+    price:10000,
+    engine:"benzina",
+    year:2014,
+    gearbox:"manuala",
+    mileage:95000,
+    power:135,
+    size:1591,
+    country:"Korea",
+    picture:"images/cars/kia-sportage.jpg",
     points:0
   },
 ]
