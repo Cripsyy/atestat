@@ -9,7 +9,38 @@
   background-color: white;
   width: 500px;
   height: 600px;
+  border-radius: 5%;
   box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5)
+}
+
+.result-photo{
+  width: 100%;
+  height: 50%;
+  border-radius: 5% 5% 0% 0%;
+}
+
+.result-div{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10%;
+  height: 50%;
+}
+
+.title{
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.specs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 5px;
+  column-gap: 20px;
+}
+
+.specs-text{
+  font-size: 1.5rem;
 }
 
 #result-buttons{
@@ -18,7 +49,3 @@
   column-gap: 50px;
 }
 
-.result-photo{
-  width: 100%;
-  height: 50%;
-}

@@ -1,3 +1,10 @@
 body{
   background: linear-gradient(180deg, rgb(8, 7, 87) 0%, rgb(41, 38, 236)100%);
 }
+
+#menu{
+  width: 10%;
+  height: 100%;
+  color: black;
+  background-color: white;
+}

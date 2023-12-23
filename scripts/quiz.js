@@ -194,7 +194,7 @@ function calculateResults(bestResults = []){
 
 
 
-function showResult(){
+function showResult() {
   mainDiv.classList.add("hidden");
   resultDiv.classList.remove("hidden");
 
@@ -204,13 +204,19 @@ function showResult(){
 
   calculateResults(bestResults);
 
-  results.querySelectorAll(".result").forEach((result) =>{
-    console.log("trebuie sa fie 3");
+  results.querySelectorAll(".result").forEach((result, index) => {
     const image = result.querySelector(".result-photo");
-    image.src = bestResults[1].image;
-  });
+    image.src = bestResults[index].picture;
 
-  console.log(bestResults);
+    const title = result.querySelector(".title");
+    title.innerText = bestResults[index].name;
+
+    const specs = result.querySelectorAll(".specs-text");
+    
+    Object.keys(bestResults[index]).slice(2, -2).forEach((property, specIndex) => {
+      specs[specIndex].innerText += " " + bestResults[index][property];
+    });
+  });
 }
 
 const cars = [
