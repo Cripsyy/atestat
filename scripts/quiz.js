@@ -127,10 +127,12 @@ function calculateResults(bestResults = []){
   for(const input of inputs){ 
     for(const car of cars){
       if(input.value === true){
-        if(car.type === input.name || car.condition === input.name || car.engine === input.name || car.gearbox === input.name){
-          cars.points += 2;
+        if(car.type === input.name){
+          car.points += 5;
+        }else if(car.condition === input.name || car.engine === input.name || car.gearbox === input.name){
+          car.points += 2;
         }else if(car.country === input.name){
-          cars.points++;
+          car.points++;
         }
       }else if(input.value !== true && input.value !== false){
         let minValue = input.name.includes("min") ? input.value : 0;
@@ -165,8 +167,6 @@ function calculateResults(bestResults = []){
   }
   return bestResults;
 }
-
-
 
 function showResult() {
   mainDiv.classList.add("hidden");

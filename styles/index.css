@@ -55,6 +55,13 @@ body{
   display: none;
 }
 
+.question{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10%;
+
+}
+
 .answers.active{
   display: flex;
   align-items: center;
@@ -69,10 +76,6 @@ body{
   justify-content: space-between;
   margin-bottom: 10px;
   width: 100%;
-}
-
-.question-input{
-  width: 50%;
 }
 
 #next-button,
