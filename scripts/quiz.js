@@ -102,12 +102,12 @@ function finishQuiz(){
       const minInput = input.name.includes("min");
       const maxInput = input.name.includes("max");
       if(minInput){
-        if(Number(value) < Number(input.min) || Number(value) > Number(input.max) ||value === ""){
+        if(value === ""){
           value = input.min;
         }
       }
       if(maxInput){
-        if(Number(value) < Number(input.min) || Number(value) > Number(input.max) ||value === ""){
+        if(value === ""){
           value = input.max;
         }
       }
@@ -123,62 +123,37 @@ function finishQuiz(){
 const inputs = [];
 
 function calculateResults(bestResults = []){
-  let carsIndex, inputsIndex;
-  let minValue, maxValue;
-  for(inputsIndex = 0; inputsIndex < inputs.length; inputsIndex++){ 
-    for(carsIndex = 0; carsIndex < cars.length; carsIndex++){
-      if(inputs[inputsIndex].value === true){
-        if(cars[carsIndex].type === inputs[inputsIndex].name){
-          cars[carsIndex].points += 2;
-        }
-        if(cars[carsIndex].condition === inputs[inputsIndex].name){
-          cars[carsIndex].points += 2;
-        }
-        if(cars[carsIndex].engine === inputs[inputsIndex].name){
-          cars[carsIndex].points += 2;
-        }
-        if(cars[carsIndex].gearbox === inputs[inputsIndex].name){
-          cars[carsIndex].points += 2;
-        }
-        if(cars[carsIndex].country === inputs[inputsIndex].name){
-          cars[carsIndex].points++;
-        }
-      }
-      if(inputs[inputsIndex].value !== true && inputs[inputsIndex].value !== false){
-        if(inputs[inputsIndex].name.includes("min")){
-          minValue = inputs[inputsIndex].value;
-        }else if(inputs[inputsIndex].name.includes("max")){
-          maxValue = inputs[inputsIndex].value;
-        }
-        if(inputs[inputsIndex].name.includes("price")){
-          if(minValue < cars[carsIndex].price < maxValue){
-            cars[carsIndex].points += 3;
-          }
-        }
-        if(inputs[inputsIndex].name.includes("year")){
-          if(minValue < cars[carsIndex].year < maxValue){
-            cars[carsIndex].points += 2;
-          }
-        }
-        if(inputs[inputsIndex].name.includes("mileage")){
-          if(minValue < cars[carsIndex].mileage < maxValue){
-            cars[carsIndex].points ++;
-          }
-        }
-        if(inputs[inputsIndex].name.includes("power")){
-          if(minValue < cars[carsIndex].power < maxValue){
-            cars[carsIndex].points ++;
-          }
-        }
-        if(inputs[inputsIndex].name.includes("size")){
-          if(minValue < cars[carsIndex].size < maxValue){
-            cars[carsIndex].points ++;
-          }
-        }
 
+  for(const input of inputs){ 
+    for(const car of cars){
+      if(input.value === true){
+        if(car.type === input.name || car.condition === input.name || car.engine === input.name || car.gearbox === input.name){
+          cars.points += 2;
+        }else if(car.country === input.name){
+          cars.points++;
+        }
+      }else if(input.value !== true && input.value !== false){
+        let minValue = input.name.includes("min") ? input.value : 0;
+        let maxValue = input.name.includes("max") ? input.value : 0;
+        
+        switch (true) {
+          case input.name.includes("price") && minValue <= car.price <= maxValue:
+            car.points += 3;
+            break;
+          case input.name.includes("year") && minValue <= car.year <= maxValue:
+            car.points += 2;
+            break;
+          case input.name.includes("mileage") && minValue <= car.mileage <= maxValue:
+            car.points++;
+            break;
+          case input.name.includes("power") && minValue <= car.power <= maxValue:
+            car.points++;
+            break;
+          case input.name.includes("size") && minValue <= car.size <= maxValue:
+            car.points++;
+            break;
+        }
       }
-      minValue = 0;
-      maxValue = 0; 
     }
   }
   cars.sort((a,b) => a.points - b.points);
@@ -186,7 +161,6 @@ function calculateResults(bestResults = []){
     console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
   }
   for(carsIndex = cars.length - 1; carsIndex >= (cars.length-3); carsIndex--){
-    console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
     bestResults.push(cars[carsIndex]);
   }
   return bestResults;
@@ -567,7 +541,7 @@ const cars = [
     gearbox:"automata",
     mileage:0,
     power:514,
-    size:null,
+    size:0,
     country:"America",
     picture:"images/cars/tesla-model-y.jpg",
     points:0
@@ -583,7 +557,7 @@ const cars = [
     gearbox:"automata",
     mileage:0,
     power:266,
-    size:null,
+    size:0,
     country:"America",
     picture:"images/cars/ford-mustang-mach-e.jpg",
     points:0
@@ -599,7 +573,7 @@ const cars = [
     gearbox:"automata",
     mileage:8200,
     power:45,
-    size:null,
+    size:0,
     country:"Romania",
     picture:"images/cars/dacia-spring.jpg",
     points:0
@@ -615,7 +589,7 @@ const cars = [
     gearbox:"automata",
     mileage:28000,
     power:184,
-    size:null,
+    size:0,
     country:"altele",
     picture:"images/cars/mini-copper.jpg",
     points:0
@@ -839,7 +813,7 @@ const cars = [
     gearbox:"automata",
     mileage:0,
     power:136,
-    size:null,
+    size:0,
     country:"Germania",
     picture:"images/cars/opel-corsa-e.jpg",
     points:0
@@ -861,3 +835,5 @@ const cars = [
     points:0
   },
 ]
+
+

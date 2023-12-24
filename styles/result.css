@@ -7,8 +7,8 @@
 
 .result{
   background-color: white;
-  width: 500px;
-  height: 600px;
+  width: clamp(250px, 30vw, 500px);
+  height: clamp(300px, 70vh, 600px);
   border-radius: 5%;
   box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5)
 }
@@ -34,6 +34,7 @@
 
 .specs{
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
   row-gap: 5px;
   column-gap: 20px;
