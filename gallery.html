@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <title>Galerie</title>
 
@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles/navbar.css">
   <link rel="stylesheet" href="styles/gallery.css">
 
+  <script src="scripts/cars.js"></script>
   <script src="scripts/gallery.js" defer></script>
 </head> 
 <body>
@@ -26,102 +27,87 @@
   </header>
 
   <div id="menu">
-    <div class="menu-button">
-      <button id="Audi">Audi</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Bmw">Bmw</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Chevrolet">Chevrolet</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Dacia">Dacia</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Fiat">Fiat</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Ford">Ford</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Honda">Honda</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Hyundai">Hyundai</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Kia">Kia</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Mazda">Mazda</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Mercedes">Mercedes</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Mini">Mini</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Mitsubishi">Mitsubishi</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Opel">Opel</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Peugeot">Peugeot</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Porsche">Porsche</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Land-Rover">Land Rover</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Seat">Seat</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Skoda">Skoda</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Subaru">Subaru</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Tesla">Tesla</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Toyota">Toyota</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Volkswagen">Volkswagen</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
-    <div class="menu-button">
-      <button id="Volvo">Volvo</button>
-      <img src="images/dreapta.png" class="menu-image">
-    </div>
+    <details class="menu-button">
+      <summary>Audi</summary>
+      <ul>
+        <li>Audi A3</li>
+        <li>Audi A4</li>
+        <li>Audi TT</li>
+      </ul>
+    </details>
+    <details class="menu-button">
+      <summary>Bmw</summary>
+      <ul>
+        <li>Bmw M2</li>
+        <li>Bmw seria 3</li>
+      </ul>
+    </details>
+    <details class="menu-button">
+      <summary>Chevrolet</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Dacia</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Fiat</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Ford</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Honda</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Hyundai</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Kia</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Mazda</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Mercedes</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Mini</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Mitsubishi</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Opel</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Peugeot</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Porsche</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Land Rover</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Seat</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Skoda</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Subaru</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Tesla</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Toyota</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Volkswagen</summary>
+    </details>
+    <details class="menu-button">
+      <summary>Volvo</summary>
+    </details>
     
   </div>
 

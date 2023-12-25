@@ -1,10 +1,10 @@
 body{
-  background: linear-gradient(180deg, rgb(8, 7, 87) 0%, rgb(41, 38, 236)100%);
+  background: linear-gradient(180deg, rgb(16, 13, 219) 0%, rgb(43, 169, 243)100%);
 }
 
 #menu{
-  width: 10vw;
-  height: 80vh;
+  width: 15%;
+  height: 90%;
   color: black;
   background-color: transparent;
   position: relative;
@@ -12,30 +12,18 @@ body{
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  border-radius: 10px;
   overflow-y: scroll;
 }
-#menu::-webkit-scrollbar {
+#menu::-webkit-scrollbar{
   display: none;
 }
 
 .menu-button{
+  font-size: 2rem;
   display: flex;
   justify-content: space-between;
   position: relative;
   left: 5px;
   top: 10px;
   border-bottom: 0.5px rgba(0, 0, 0, 0.3) solid;
-}
-
-.menu-button > button{
-  border: none;
-  background: transparent;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.menu-image{
-  width: 20px;
-  height: 20px;
 }
