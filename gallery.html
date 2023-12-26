@@ -26,90 +26,251 @@
     </div>  
   </header>
 
-  <div id="menu">
-    <details class="menu-button">
-      <summary>Audi</summary>
-      <ul>
-        <li>Audi A3</li>
-        <li>Audi A4</li>
-        <li>Audi TT</li>
-      </ul>
-    </details>
-    <details class="menu-button">
-      <summary>Bmw</summary>
-      <ul>
-        <li>Bmw M2</li>
-        <li>Bmw seria 3</li>
-      </ul>
-    </details>
-    <details class="menu-button">
-      <summary>Chevrolet</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Dacia</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Fiat</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Ford</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Honda</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Hyundai</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Kia</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Mazda</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Mercedes</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Mini</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Mitsubishi</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Opel</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Peugeot</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Porsche</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Land Rover</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Seat</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Skoda</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Subaru</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Tesla</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Toyota</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Volkswagen</summary>
-    </details>
-    <details class="menu-button">
-      <summary>Volvo</summary>
-    </details>
+  <div class="gallery-main">
+    <div id="menu">
+      <details class="menu-button" onclick="loadContent('Audi')">
+        <summary>Audi</summary>
+        <ul>
+          <li class="car-models">Audi A3</li>
+          <li class="car-models">Audi A4</li>
+          <li class="car-models">Audi TT</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Bmw')">
+        <summary>Bmw</summary>
+        <ul>
+          <li class="car-models">Bmw M2</li>
+          <li class="car-models">Bmw Seria 3</li>
+          <li class="car-models">Bmw Seria 3 E30</li>
+          <li class="car-models">Bmw Seria X3</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Chevrolet')">
+        <summary>Chevrolet</summary>
+        <ul>
+          <li class="car-models">Chevrolet Malibu</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Citroën')">
+        <summary>Citroën</summary>
+        <ul>
+          <li class="car-models">Citroën C3</li>
+          <li class="car-models">Citroën C-Elysée</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Cupra')">
+        <summary>Chevrolet</summary>
+        <ul>
+          <li class="car-models">Cupra Formentor</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Dacia')">
+        <summary>Dacia</summary>
+        <ul>
+          <li class="car-models">Dacia 1300</li>
+          <li class="car-models">Dacia Duster</li>
+          <li class="car-models">Dacia Logan</li>
+          <li class="car-models">Dacia Sandero</li>
+          <li class="car-models">Dacia Spring</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Fiat')">
+        <summary>Fiat</summary>
+        <ul>
+          <li class="car-models">Fiat Punto</li>
+          <li class="car-models">Fiat Panda</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Ford')">
+        <summary>Ford</summary>
+        <ul>
+          <li class="car-models">Ford Focus Break</li>
+          <li class="car-models">Ford Focus</li>
+          <li class="car-models">Ford Kuga</li>
+          <li class="car-models">Ford Mustang Mach-E</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Honda')">
+        <summary>Honda</summary>
+        <ul>
+          <li class="car-models">Honda Civic</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Hyundai')">
+        <summary>Hyundai</summary>
+        <ul>
+          <li class="car-models">Hyundai Bayon</li>
+          <li class="car-models">Hyundai i30</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Jaguar')">
+        <summary>Jaguar</summary>
+        <ul>
+          <li class="car-models">Jaguar XF</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Jeep')">
+        <summary>Jeep</summary>
+        <ul>
+          <li class="car-models">Jeep Renegade</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Kia')">
+        <summary>Kia</summary>
+        <ul>
+          <li class="car-models">Kia Ceed</li>
+          <li class="car-models">Kia Sportage</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Land Rover')">
+        <summary>Land Rover</summary>
+        <ul>
+          <li class="car-models">Land Rover Range Rover</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Lexus')">
+        <summary>Lexus</summary>
+        <ul>
+          <li class="car-models">Lexus Seria NX</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Maserati')">
+        <summary>Maserati</summary>
+        <ul>
+          <li class="car-models">Maserati Granturismo</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Mazda')">
+        <summary>Mazda</summary>
+        <ul>
+          <li class="car-models">Mazda Cx-5</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Mercedes')">
+        <summary>Mercedes</summary>
+        <ul>
+          <li class="car-models">Mercedes Cla</li>
+          <li class="car-models">Mercedes Clk</li>
+          <li class="car-models">Mercedes G-Class</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Mini')">
+        <summary>Mini</summary>
+        <ul>
+          <li class="car-models">Mini Copper</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Mitsubishi')">
+        <summary>Mitsubishi</summary>
+        <ul>
+          <li class="car-models">Mitsubishi 3000</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Nissan')">
+        <summary>Nissan</summary>
+        <ul>
+          <li class="car-models">Nissan Micra</li>
+          <li class="car-models">Nissan QashQai</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Opel')">
+        <summary>Opel</summary>
+        <ul>
+          <li class="car-models">Opel Adam</li>
+          <li class="car-models">Opel Corsa E</li>
+          <li class="car-models">Opel Insignia</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Peugeot')">
+        <summary>Peugeot</summary>
+        <ul>
+          <li class="car-models">Peugeot 508</li>
+          <li class="car-models">Peugeot RCZ</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Porsche')">
+        <summary>Porsche</summary>
+        <ul>
+          <li class="car-models">Porsche Cayman</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Renault')">
+        <summary>Renault</summary>
+        <ul>
+          <li class="car-models">Renault Clio</li>
+          <li class="car-models">Renault Megane</li>
+          <li class="car-models">Renault Scenic</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Seat')">
+        <summary>Seat</summary>
+        <ul>
+          <li class="car-models">Seat Altea</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Skoda')">
+        <summary>Skoda</summary>
+        <ul>
+          <li class="car-models">Skoda Fabia</li>
+          <li class="car-models">Skoda Kodiaq</li>
+          <li class="car-models">Skoda Octavia</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Smart')">
+        <summary>Smart</summary>
+        <ul>
+          <li class="car-models">Smart Fortwo</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Subaru')">
+        <summary>Subaru</summary>
+        <ul>
+          <li class="car-models">Subaru Brz</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Suzuki')">
+        <summary>Suzuki</summary>
+        <ul>
+          <li class="car-models">Suzuki Samurai</li>
+          <li class="car-models">Suzuki Swift</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Tesla')">
+        <summary>Tesla</summary>
+        <ul>
+          <li class="car-models">Tesla Model Y</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Toyota')">
+        <summary>Toyota</summary>
+        <ul>
+          <li class="car-models">Toyota Auris</li>
+          <li class="car-models">Toyota Corolla</li>
+          <li class="car-models">Toyota Prius</li>
+          <li class="car-models">Toyota Supra</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Volkswagen')">
+        <summary>Volkswagen</summary>
+        <ul>
+          <li class="car-models">Volkswagen Arteon</li>
+          <li class="car-models">Volkswagen Golf</li>
+          <li class="car-models">Volkswagen Passat</li>
+          <li class="car-models">Volkswagen Scirocco</li>
+        </ul>
+      </details>
+      <details class="menu-button" onclick="loadContent('Volvo')">
+        <summary>Volvo</summary>
+        <ul>
+          <li class="car-models">Volvo xc60</li>
+        </ul>
+      </details>
+    </div>
+    <div id="cars-container"></div>
+    
     
   </div>
+  
 
 </body>
 </html>

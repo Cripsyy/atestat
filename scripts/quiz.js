@@ -123,7 +123,7 @@ function finishQuiz(){
 const inputs = [];
 
 function calculateResults(bestResults = []){
-
+  otherCountries = ["Korea", "Italia", "Anglia", "Spania", "Cehia", "Suedia"];
   for(const input of inputs){ 
     for(const car of cars){
       if(input.value === true){
@@ -131,7 +131,7 @@ function calculateResults(bestResults = []){
           car.points += 5;
         }else if(car.condition === input.name || car.engine === input.name || car.gearbox === input.name){
           car.points += 2;
-        }else if(car.country === input.name){
+        }else if(car.country === input.name || otherCountries.includes(car.country)){
           car.points++;
         }
       }else if(input.value !== true && input.value !== false){
@@ -143,7 +143,7 @@ function calculateResults(bestResults = []){
             car.points += 3;
             break;
           case input.name.includes("year") && minValue <= car.year <= maxValue:
-            car.points += 2;
+            car.points += 3;
             break;
           case input.name.includes("mileage") && minValue <= car.mileage <= maxValue:
             car.points++;
