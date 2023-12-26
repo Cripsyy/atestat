@@ -1,73 +1,85 @@
-#results{
+#result-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  row-gap: 20px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding-top: 2rem;
+}
+
+#result-div.show-more {
+  justify-content: flex-start;
+}
+
+#result-div::-webkit-scrollbar {
+  display: none;
+}
+
+#results,
+#more-results {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 20px;
 }
 
-.result{
+.result {
   background-color: white;
+  padding: 10px;
   width: clamp(250px, 30vw, 500px);
-  height: clamp(300px, 70vh, 600px);
+  height: clamp(300px, 50vh, 600px);
   border-radius: 5%;
-  box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5)
+  box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5);
 }
 
-.result-photo{
+.result-photo {
   width: 100%;
-  height: 50%;
-  border-radius: 5% 5% 0% 0%;
+  height: 70%;
+  border-radius: 10px;
+  border: solid black 2px;
 }
 
-.result-div{
+.result-div {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   row-gap: 10%;
-  height: 50%;
+  height: 30%;
 }
 
-.title{
+.title {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.specs{
-  display: grid;
+.specs {
+  display: flex;
   justify-content: center;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 5px;
+  font-size: 1.5rem;
   column-gap: 20px;
 }
 
-.specs-text{
-  font-size: 1.5rem;
-}
-
-#result-buttons{
+#result-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 5%;
   column-gap: 50px;
 }
 
 .restart-button,
-.gallery-button{
+.gallery-button,
+.more-button {
   display: flex;
   font-size: 1rem;
-  width: 6rem;
-  height: 3rem;
+  width: 8rem;
+  height: 4rem;
   background: black;
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   cursor: pointer;
   align-items: center;
   justify-content: center;
-}
-
-.restart-button > a,
-.gallery-button > a{
   color: white;
 }
-
-
-

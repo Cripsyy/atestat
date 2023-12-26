@@ -122,8 +122,10 @@ function finishQuiz(){
 
 const inputs = [];
 
-function calculateResults(bestResults = []){
-  otherCountries = ["Korea", "Italia", "Anglia", "Spania", "Cehia", "Suedia"];
+function calculateResults(){
+  let bestResults = [];
+  let otherResults = [];
+  const otherCountries = ["Korea", "Italia", "Anglia", "Spania", "Cehia", "Suedia"];
   for(const input of inputs){ 
     for(const car of cars){
       if(input.value === true){
@@ -131,8 +133,14 @@ function calculateResults(bestResults = []){
           car.points += 5;
         }else if(car.condition === input.name || car.engine === input.name || car.gearbox === input.name){
           car.points += 2;
-        }else if(car.country === input.name || otherCountries.includes(car.country)){
+        }else if(car.country === input.name){
           car.points++;
+        }else if(input.name === "altele"){
+          otherCountries.forEach(country =>{
+            if(car.country === country){
+              car.points++;
+            }
+          });
         }
       }else if(input.value !== true && input.value !== false){
         let minValue = input.name.includes("min") ? input.value : 0;
@@ -159,13 +167,16 @@ function calculateResults(bestResults = []){
     }
   }
   cars.sort((a,b) => a.points - b.points);
-  for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
-    console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
-  }
+  // for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
+  //   console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
+  // }
   for(let carsIndex = cars.length - 1; carsIndex >= (cars.length-3); carsIndex--){
     bestResults.push(cars[carsIndex]);
   }
-  return bestResults;
+  for(let carsIndex = cars.length - 1; carsIndex >= (cars.length-6); carsIndex--){
+    otherResults.push(cars[carsIndex]);
+  }
+  return { bestResults, otherResults };
 }
 
 function showResult() {
@@ -174,9 +185,7 @@ function showResult() {
 
   const results = document.getElementById("results");
 
-  let bestResults = [];
-
-  calculateResults(bestResults);
+  const { bestResults, otherResults } = calculateResults();
 
   results.querySelectorAll(".result").forEach((result, index) => {
     const image = result.querySelector(".result-photo");
@@ -184,13 +193,49 @@ function showResult() {
 
     const title = result.querySelector(".title");
     title.innerText = bestResults[index].name;
-
-    const specs = result.querySelectorAll(".specs-text");
     
-    Object.keys(bestResults[index]).slice(2, -2).forEach((property, specIndex) => {
-      specs[specIndex].innerText += " " + bestResults[index][property];
-    });
+    const price = result.querySelector(".price");
+    price.innerText += bestResults[index].price;
+
+    const year = result.querySelector(".year");
+    year.innerText += bestResults[index].year;
   });
+}
+
+let wasPressed = false;
+
+function showMore() {
+  const { bestResults, otherResults } = calculateResults();
+  const moreResults = document.getElementById("more-results");
+  const results = document.getElementById("result-div");
+  const button = document.querySelector(".more-button");
+  console.log(button.textContent);
+  if(button.textContent === "SHOW MORE"){
+    results.classList.add("show-more");
+    moreResults.classList.remove("hidden");
+    if(!wasPressed){
+      moreResults.querySelectorAll(".result").forEach((result, index) => {
+        const image = result.querySelector(".result-photo");
+        image.src = otherResults[index + 3].picture;
+  
+        const title = result.querySelector(".title");
+        title.innerText = otherResults[index + 3].name;
+  
+        const price = result.querySelector(".price");
+        price.innerText += otherResults[index + 3].price;
+  
+        const year = result.querySelector(".year");
+        year.innerText += otherResults[index + 3].year;
+      });
+      wasPressed = true;
+    }
+    button.innerText = "SHOW LESS";
+  }else{
+    results.classList.remove("show-more");
+    moreResults.classList.add("hidden");
+    button.innerText = "SHOW MORE";
+  }
+  
 }
 
 
