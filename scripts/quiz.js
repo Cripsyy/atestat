@@ -4,6 +4,7 @@ const startButton = document.getElementById("start-button");
 const nextButton = document.getElementById("next-button");
 const previousButton = document.getElementById("previous-button");
 const finishButton = document.getElementById("finish-button");
+const allButton = document.getElementById("all-button");
 const initialDiv = document.getElementById("initial-div");
 const mainDiv = document.getElementById("main-div");
 const resultDiv = document.getElementById("result-div");
@@ -13,24 +14,36 @@ startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 previousButton.addEventListener("click", previousQuestion);
 finishButton.addEventListener("click", finishQuiz);
-
+allButton.addEventListener("click", checkAll);
 
 function startQuiz(){
   initialDiv.classList.add("hidden");
   questionDiv.classList.remove("hidden");
   nextButton.classList.remove("hidden");
+  form.querySelectorAll("input").forEach((input) => { 
+    input.addEventListener("change", changedValue);
+  });
 }
 
 function changeQuestion(button){
-  let index = 0;
   const active = document.querySelector(".active");
-  index = answers.indexOf(active);
+  let index = answers.indexOf(active);
+
   answers[index].classList.remove("active");
-  if (button === "next") {
+
+  if (button === "next" && answers[index + 1].hasAttribute("answered")) {
     index++;
-  } else if (button === "prev") {
-    index--;
+    allButton.textContent = "CLEAR";
+  } else if(button === "next"){
+    index++;
+    allButton.textContent = "ALL";
+    answers[index].setAttribute("answered", true);
   }
+  if(button === "prev"){
+    index--;
+    allButton.textContent = "CLEAR";
+  }
+ 
   answers[index].classList.add("active");
 
   //make previous button appear from the second option
@@ -59,28 +72,38 @@ function nextQuestion() {
 
   let isMinInput, isMaxInput;
 
+  let contor = 0;
+
   form.querySelectorAll(".active input").forEach((input) => {
   
     isMinInput = input.name.includes("min");
     isMaxInput = input.name.includes("max");
 
     if(input.type === "number"){
-      if (isMinInput) {
+      if (isMinInput){
         firstInput = input;
-      } else if (isMaxInput) {
+      }else if (isMaxInput){
         secondInput = input;
       }
     }
+    if(input.type === "checkbox" && input.checked){
+      contor++;
+    }
+    
   });
 
-  if (firstInput && secondInput){
-    if(Number(firstInput.value) > Number(secondInput.value)){
-      firstInput.value = "";
-      secondInput.value = "";
+  if(!firstInput){
+    if(contor === 0){
+      alert("Nicio valoare selectata")
+      return;
+    }
+  }
+  
+  if(firstInput && secondInput){
+    if(Number(firstInput.value === "") || Number(secondInput.value === "")){
       alert("Valori indisponibile");
       return;
     }
-
   }
   
   changeQuestion("next");
@@ -91,6 +114,78 @@ function previousQuestion(){
   changeQuestion("prev");
 }
 
+function checkAll(){
+
+  let contor = 0;
+
+  form.querySelectorAll(".active input").forEach((input) => {
+    const minInput = input.name.includes("min");
+    const maxInput = input.name.includes("max");
+
+    if(input.type === "checkbox" && allButton.textContent === "ALL"){
+      input.checked = true;
+      input.classList.add("has-value");
+    }else if(input.type === "checkbox" && allButton.textContent === "CLEAR"){
+      input.checked = false;
+      input.classList.remove("has-value");
+    }
+
+    if(input.value === "" && allButton.textContent === "ALL"){
+      if(minInput){
+        input.value = input.min;
+      }
+      if(maxInput){
+        input.value = input.max;
+      }
+      input.classList.add("has-value");
+    }else if(input.type !== "checkbox" && allButton.textContent === "CLEAR"){
+      if(minInput){
+        input.value = "";
+      }
+      if(maxInput){
+        input.value = "";
+      }
+      input.classList.remove("has-value");
+    }
+
+    if(input.classList.value === "has-value"){
+      contor++;
+    }
+  });
+
+  if(contor > 0){
+    allButton.textContent = "CLEAR";
+  }else if(contor === 0){
+    allButton.textContent = "ALL";
+  }
+}
+
+function changedValue(){
+  let contor = 0;
+  form.querySelectorAll(".active input").forEach((input) => {
+    if(input.type === "checkbox" && input.checked === true){
+      input.classList.add("has-value");
+    }else if(input.type === "checkbox" && input.checked === false){
+      input.classList.remove("has-value");
+    }
+    if(input.type === "number" && input.value !== ""){
+      input.classList.add("has-value");
+    }else if(input.type === "number" && input.value === ""){
+      input.classList.remove("has-value");
+    }
+
+    if(input.classList.value === "has-value"){
+      contor++;
+    }
+    if(contor > 0){
+      allButton.textContent = "CLEAR";
+    }else if(contor === 0){
+      allButton.textContent = "ALL";
+    }
+  });
+  
+}
+
 function finishQuiz(){
   
   form.querySelectorAll("input").forEach((input) => {
@@ -99,18 +194,6 @@ function finishQuiz(){
       value = input.checked;
       inputs.push({name, value});
     }else if(input.type === "number"){
-      const minInput = input.name.includes("min");
-      const maxInput = input.name.includes("max");
-      if(minInput){
-        if(value === ""){
-          value = input.min;
-        }
-      }
-      if(maxInput){
-        if(value === ""){
-          value = input.max;
-        }
-      }
       inputs.push({ name, value });
     }
   });
@@ -167,9 +250,9 @@ function calculateResults(){
     }
   }
   cars.sort((a,b) => a.points - b.points);
-  // for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
-  //   console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
-  // }
+  for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
+    console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
+  }
   for(let carsIndex = cars.length - 1; carsIndex >= (cars.length-3); carsIndex--){
     bestResults.push(cars[carsIndex]);
   }
@@ -195,14 +278,12 @@ function showResult() {
     title.innerText = bestResults[index].name;
     
     const price = result.querySelector(".price");
-    price.innerText += bestResults[index].price;
+    price.innerText += bestResults[index].price + "€";
 
     const year = result.querySelector(".year");
     year.innerText += bestResults[index].year;
   });
 }
-
-let wasPressed = false;
 
 function showMore() {
   const { bestResults, otherResults } = calculateResults();
@@ -213,7 +294,6 @@ function showMore() {
   if(button.textContent === "SHOW MORE"){
     results.classList.add("show-more");
     moreResults.classList.remove("hidden");
-    if(!wasPressed){
       moreResults.querySelectorAll(".result").forEach((result, index) => {
         const image = result.querySelector(".result-photo");
         image.src = otherResults[index + 3].picture;
@@ -222,13 +302,11 @@ function showMore() {
         title.innerText = otherResults[index + 3].name;
   
         const price = result.querySelector(".price");
-        price.innerText += otherResults[index + 3].price;
+        price.innerText = "pretz:" + otherResults[index + 3].price + `€`;
   
         const year = result.querySelector(".year");
-        year.innerText += otherResults[index + 3].year;
+        year.innerText = "An fabricatzie:" + otherResults[index + 3].year;
       });
-      wasPressed = true;
-    }
     button.innerText = "SHOW LESS";
   }else{
     results.classList.remove("show-more");
