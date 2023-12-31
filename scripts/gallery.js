@@ -19,13 +19,19 @@ function loadContent(brand){
 
       carDiv.appendChild(carImage);
       carDiv.appendChild(carName);
+
+      const properties = ["Caroserie", "Stare", "Pret", "Motor", "An fabricatie", "Cutie viteze", "Kilometraj", "Putere", "Capacitate", "Tara"];
+      const symbol = ["", "", "€", "", "", "", "km", "cp", "cm3", ""]
+      const specsDiv = document.createElement("div");
+      specsDiv.classList.add("car-specs");
       
-      Object.keys(element).slice(2, -2).forEach((property) =>{
+      Object.keys(element).slice(2, -2).forEach((property,index) =>{
         const propertyParagraph = document.createElement("p");
         propertyParagraph.classList.add("car-spec");
-        propertyParagraph.innerText = `${element[property]}`;
-        carDiv.appendChild(propertyParagraph);
+        propertyParagraph.innerText = `${properties[index]}: ${element[property]} ${symbol[index]}`;
+        specsDiv.appendChild(propertyParagraph);
       });
+      carDiv.appendChild(specsDiv);
       carsContainer.appendChild(carDiv);
     });
   }
@@ -47,15 +53,23 @@ gradientChange();
 
 function gradientChange(){
   const body = document.body;
-  let angle = 180;
+  let percent = 100;
+  let increasing = false;
 
   setInterval(() => {
-    angle++;
-    if(angle > 360){
-      angle = 0;
+    if (increasing) {
+      percent++;
+      if (percent === 100) {
+        increasing = false;
+      }
+    } else {
+      percent--;
+      if (percent === 0) {
+        increasing = true;
+      }
     }
-    body.style.background = `rgba(0, 0, 0, 0) linear-gradient(${angle}deg, rgb(16, 13, 219) 0%, rgb(43, 169, 243) 100%) repeat scroll 0% 0% / auto padding-box border-box`;
-  }, 20);
+    body.style.background = `linear-gradient(180deg, rgb(7, 87, 16) 0%, rgb(35, 194, 17) ${percent}%)`;
+  }, 50);
 }
 
 

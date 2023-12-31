@@ -32,7 +32,6 @@
   width: clamp(250px, 30vw, 500px);
   height: clamp(300px, 50vh, 600px);
   border-radius: 5%;
-  box-shadow: 25px 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .result-photo {

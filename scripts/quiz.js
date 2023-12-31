@@ -31,20 +31,21 @@ function changeQuestion(button){
 
   answers[index].classList.remove("active");
 
-  if (button === "next" && answers[index + 1].hasAttribute("answered")) {
+  if(button === "next") {
     index++;
-    allButton.textContent = "CLEAR";
-  } else if(button === "next"){
-    index++;
-    allButton.textContent = "ALL";
-    answers[index].setAttribute("answered", true);
-  }
-  if(button === "prev"){
+  }else{
     index--;
-    allButton.textContent = "CLEAR";
   }
- 
+
   answers[index].classList.add("active");
+  allButton.textContent = "ALL";
+
+  form.querySelectorAll(".active input").forEach((input) => { 
+    if(input.classList.contains("has-value")){
+      allButton.textContent = "CLEAR";
+    }
+  });
+ 
 
   //make previous button appear from the second option
   if(index >= 0){
@@ -107,6 +108,7 @@ function nextQuestion() {
   }
   
   changeQuestion("next");
+
 }
 
 
@@ -275,13 +277,13 @@ function showResult() {
     image.src = bestResults[index].picture;
 
     const title = result.querySelector(".title");
-    title.innerText = bestResults[index].name;
+    title.textContent = bestResults[index].name;
     
     const price = result.querySelector(".price");
-    price.innerText += bestResults[index].price + "€";
+    price.textContent += bestResults[index].price + "€";
 
     const year = result.querySelector(".year");
-    year.innerText += bestResults[index].year;
+    year.textContent += bestResults[index].year;
   });
 }
 
@@ -299,19 +301,19 @@ function showMore() {
         image.src = otherResults[index + 3].picture;
   
         const title = result.querySelector(".title");
-        title.innerText = otherResults[index + 3].name;
+        title.textContent = otherResults[index + 3].name;
   
         const price = result.querySelector(".price");
-        price.innerText = "pretz:" + otherResults[index + 3].price + `€`;
+        price.textContent = "Pret: " + otherResults[index + 3].price + `€`;
   
         const year = result.querySelector(".year");
-        year.innerText = "An fabricatzie:" + otherResults[index + 3].year;
+        year.textContent = "An fabricatzie: " + otherResults[index + 3].year;
       });
-    button.innerText = "SHOW LESS";
+    button.textContent = "SHOW LESS";
   }else{
     results.classList.remove("show-more");
     moreResults.classList.add("hidden");
-    button.innerText = "SHOW MORE";
+    button.textContent = "SHOW MORE";
   }
   
 }
