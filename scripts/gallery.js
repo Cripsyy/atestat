@@ -6,8 +6,8 @@ function loadContent(brand){
 
   if(filteredCars.length > 0){
     filteredCars.forEach((element) => {
-      const carDiv = document.createElement("div");
-      carDiv.classList.add("car-container");
+      const carConstainer = document.createElement("div");
+      carConstainer.classList.add("car-container");
 
       const carImage = document.createElement("img");
       carImage.src = element.picture;
@@ -16,21 +16,29 @@ function loadContent(brand){
       const carName = document.createElement("p");
       carName.innerText = element.name;
       carName.classList.add("car-name");
+
+      const arrow = document.createElement("img");
+      arrow.src = "images/expand-arrow.svg";
+      arrow.classList.add("arrow");
       let opened = false;
-      carName.addEventListener("click", () => {
+
+      arrow.addEventListener("click", () => {
         if(!opened){
           specsDiv.classList.remove("hidden");
-          carDiv.style.height = "600px";
+          carConstainer.style.height = "650px";
+          arrow.style.rotate = "180deg";
           opened = true;
         }else{
           specsDiv.classList.add("hidden");
-          carDiv.style.height = "300px";
+          carConstainer.style.height = "300px";
+          arrow.style.rotate = "0deg";
           opened = false;
         }
       });
 
-      carDiv.appendChild(carImage);
-      carDiv.appendChild(carName);
+      carConstainer.appendChild(carImage);
+      carConstainer.appendChild(carName);
+      carConstainer.appendChild(arrow);
 
       const properties = ["Caroserie", "Stare", "Pret", "Motor", "An fabricatie", "Cutie viteze", "Kilometraj", "Putere", "Capacitate", "Tara"];
       const symbol = ["", "", "€", "", "", "", "km", "cp", "cm3", ""]
@@ -44,8 +52,8 @@ function loadContent(brand){
         specsDiv.appendChild(propertyParagraph);
       });
       specsDiv.classList.add("hidden");
-      carDiv.appendChild(specsDiv);
-      carsContainer.appendChild(carDiv);
+      carConstainer.appendChild(specsDiv);
+      carsContainer.appendChild(carConstainer);
     });
   }
 }
@@ -71,27 +79,5 @@ summaries.forEach((summary) =>{
   });
 });
 
-gradientChange();
-
-function gradientChange(){
-  const body = document.body;
-  let percent = 100;
-  let increasing = false;
-
-  setInterval(() => {
-    if (increasing) {
-      percent++;
-      if (percent === 100) {
-        increasing = false;
-      }
-    } else {
-      percent--;
-      if (percent === 0) {
-        increasing = true;
-      }
-    }
-    body.style.background = `linear-gradient(180deg, rgb(7, 87, 16) 0%, rgb(35, 194, 17) ${percent}%)`;
-  }, 50);
-}
 
 

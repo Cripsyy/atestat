@@ -1,3 +1,4 @@
-body{
-  background: linear-gradient(180deg, rgb(202, 113, 11) 0%, rgb(222, 214, 8)100%);
+#contact-main{
+  background-image: url("../images/background.svg");
+  height: 90%;
 }

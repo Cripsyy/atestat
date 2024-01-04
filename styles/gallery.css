@@ -1,24 +1,25 @@
-body{
-  background: linear-gradient(180deg, rgb(16, 13, 219) 0%, rgb(43, 169, 243)100%);
-}
-
 .hidden{
   display: none;
 }
 
 .gallery-main{
   display: flex;
-  height: 90%; 
+  height: 90%;
+  background-image: url("../images/background.svg");
 }
 
 #menu{
   width: 12%;
   height: 100%;
   position: sticky;
-  top: 0;
+  top: 100px;
+  right: 20px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  background-color: rgba(30, 168, 9, 0.8);
+  padding: 10px;
+  row-gap: 5px;
 }
 #menu::-webkit-scrollbar{
   display: none;
@@ -30,10 +31,10 @@ body{
 }
 
 .menu-button{
+  cursor: pointer;
   font-size: 2rem;
   display: flex;
   justify-content: space-between;
-  position: relative;
   left: 5px;
   top: 10px;
   color: rgb(0, 0, 0);
@@ -47,6 +48,7 @@ body{
   grid-template-rows: repeat(2, 1fr);
   row-gap: 30px;
   overflow-y: scroll;
+  padding-bottom: 100px;
 }
 #cars-container::-webkit-scrollbar{
   display: none;
@@ -63,6 +65,8 @@ body{
   background-color: black;
   border-radius: 10px;
   padding: 10px;
+  user-select: none;
+  position: relative;
 }
 
 .car-image{
@@ -79,4 +83,11 @@ body{
 .car-spec{
   display: flex;
   justify-content:space-between;
+}
+
+.arrow{
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
 }

@@ -1236,7 +1236,7 @@ const cars = [
     name:"Chevrolet Spark",
     type:"hatchback",
     condition:"second-hand",
-    price:2010,
+    price:3500,
     engine:"benzina",
     year:2010,
     gearbox:"manuala",
