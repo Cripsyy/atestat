@@ -200,9 +200,14 @@ function finishQuiz(){
     }
   });
   form.reset();
-  console.log(inputs);
 
   showResult();
+
+  startButton.removeEventListener("click", startQuiz);
+  nextButton.removeEventListener("click", nextQuestion);
+  previousButton.removeEventListener("click", previousQuestion);
+  finishButton.removeEventListener("click", finishQuiz);
+  allButton.removeEventListener("click", checkAll);
 }
 
 const inputs = [];
@@ -252,9 +257,9 @@ function calculateResults(){
     }
   }
   cars.sort((a,b) => a.points - b.points);
-  for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
-    console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
-  }
+  // for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
+  //   console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
+  // }
   for(let carsIndex = cars.length - 1; carsIndex >= (cars.length-3); carsIndex--){
     bestResults.push(cars[carsIndex]);
   }

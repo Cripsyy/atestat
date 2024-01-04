@@ -2,25 +2,22 @@ body{
   background: linear-gradient(180deg, rgb(16, 13, 219) 0%, rgb(43, 169, 243)100%);
 }
 
+.hidden{
+  display: none;
+}
+
 .gallery-main{
   display: flex;
-  height: 85%;
-  overflow-y: scroll;
-}
-.gallery-main::-webkit-scrollbar{
-  display: none;
+  height: 90%; 
 }
 
 #menu{
   width: 12%;
   height: 100%;
   position: sticky;
-  top: 10px;
-  left: 10px;
-  border-radius: 20px;
+  top: 0;
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
   overflow-y: scroll;
 }
 #menu::-webkit-scrollbar{
@@ -43,18 +40,24 @@ body{
 }
 
 #cars-container{
-
   display: grid;
-  width: 85%;
+  width: 88%;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   row-gap: 30px;
+  overflow-y: scroll;
+}
+#cars-container::-webkit-scrollbar{
+  display: none;
 }
 
 .car-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 400px;
-  height: 500px;
+  height: 300px;
   font-size: 2rem;
   color: white;
   background-color: black;
@@ -63,6 +66,17 @@ body{
 }
 
 .car-image{
-  height: 50%;
+  height: 85%;
+  max-height: 255px;
   width: 100%;
+  aspect-ratio: 80/51;
+}
+
+.car-specs{
+  width: 100%;
+}
+
+.car-spec{
+  display: flex;
+  justify-content:space-between;
 }

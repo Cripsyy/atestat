@@ -16,6 +16,18 @@ function loadContent(brand){
       const carName = document.createElement("p");
       carName.innerText = element.name;
       carName.classList.add("car-name");
+      let opened = false;
+      carName.addEventListener("click", () => {
+        if(!opened){
+          specsDiv.classList.remove("hidden");
+          carDiv.style.height = "600px";
+          opened = true;
+        }else{
+          specsDiv.classList.add("hidden");
+          carDiv.style.height = "300px";
+          opened = false;
+        }
+      });
 
       carDiv.appendChild(carImage);
       carDiv.appendChild(carName);
@@ -28,12 +40,22 @@ function loadContent(brand){
       Object.keys(element).slice(2, -2).forEach((property,index) =>{
         const propertyParagraph = document.createElement("p");
         propertyParagraph.classList.add("car-spec");
-        propertyParagraph.innerText = `${properties[index]}: ${element[property]} ${symbol[index]}`;
+        propertyParagraph.innerHTML = `${properties[index]}: <span>${element[property]} ${symbol[index]}</span>`;
         specsDiv.appendChild(propertyParagraph);
       });
+      specsDiv.classList.add("hidden");
       carDiv.appendChild(specsDiv);
       carsContainer.appendChild(carDiv);
     });
+  }
+}
+
+function isDetailsOpen(detailsId){
+  const detailsElement = document.getElementById(detailsId);
+  isOpen = detailsElement.open;
+  if(isOpen){
+    loadContent(detailsId);
+    console.log("ceva");
   }
 }
 
