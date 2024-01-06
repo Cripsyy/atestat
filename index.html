@@ -45,28 +45,28 @@
           <div class="answers active">
             <p class="question">1.Ce tip de masina doriti?</p>
             <div class="answers-option">
-              <label for="sedan">sedan</label>
               <img src="images/car icons/sedan.png">
+              <label for="sedan" class="image-question">sedan</label>
               <input type="checkbox" name="sedan" id="sedan">
             </div>
             <div class="answers-option">
-              <label for="break">break</label>
               <img src="images/car icons/break.png">
+              <label for="break" class="image-question">break</label>
               <input type="checkbox" name="break" id="break">  
             </div>
             <div class="answers-option">
-              <label for="coupe">coupe</label>
               <img src="images/car icons/coupe.png">
+              <label for="coupe" class="image-question">coupe</label>
               <input type="checkbox" name="coupe" id="coupe">
             </div>
             <div class="answers-option">
-              <label for="hatchback">hatchback</label>
               <img src="images/car icons/hatchback.png">
+              <label for="hatchback" class="image-question">hatchback</label>
               <input type="checkbox" name="hatchback" id="hatchback">
             </div>
             <div class="answers-option">
-              <label for="suv">suv</label>
               <img src="images/car icons/suv.png">
+              <label for="suv" class="image-question">suv</label>
               <input type="checkbox" name="suv" id="suv">
             </div>
           </div>
@@ -169,46 +169,48 @@
           <div class="answers">
             <p class="question">10.Tara de origine?</p>
             <div class="answers-option">
-              <label for="romania">Romania</label>
-              <img src="images/flags/Romania.png">
+              <label for="romania" class="image-question">Romania</label>
+              <img src="images/flags/Romania.png" class="flag">
               <input type="checkbox" name="Romania" id="romania">
             </div>
             <div class="answers-option">
-              <label for="germania">Germania</label>
-              <img src="images/flags/Germania.png">
+              <label for="germania" class="image-question">Germania</label>
+              <img src="images/flags/Germania.png" class="flag">
               <input type="checkbox" name="Germania" id="germania">
             </div>
             <div class="answers-option">
-              <label for="america">America</label>
-              <img src="images/flags/America.png">
+              <label for="america" class="image-question">America</label>
+              <img src="images/flags/America.png" class="flag">
               <input type="checkbox" name="America" id="america">
             </div>
             <div class="answers-option">
-              <label for="japonia">Japonia</label>
-              <img src="images/flags/Japonia.png">
+              <label for="japonia" class="image-question">Japonia</label>
+              <img src="images/flags/Japonia.png" class="flag">
               <input type="checkbox" name="Japonia" id="japonia">
             </div>
             <div class="answers-option">
-              <label for="Franta">Franta</label>
-              <img src="images/flags/Franta.png">
-              <input type="checkbox" name="Franta" id="Franta">
+              <label for="franta" class="image-question">Franta</label>
+              <img src="images/flags/Franta.png" class="flag">
+              <input type="checkbox" name="Franta" id="franta">
             </div>
             <div class="answers-option">
-              <label for="altele">Altele</label>
-              <img src="images/flags/altele.png">
+              <label for="altele" class="image-question">Altele</label>
+              <img src="images/flags/altele.png" class="flag">
               <input type="checkbox" name="altele" id="altele">
             </div>
           </div>
         </form>
-        <button id="next-button" class="button hidden">NEXT</button>
-        <button id="previous-button" class="button hidden">PREVIOUS</button>
-        <button id="finish-button" class="button hidden">FINISH</button>
-        <button id="all-button" class="button">ALL</button>
+        <div class="buttons">
+          <button id="previous-button" class="button hidden"></button>
+          <button id="all-button" class="button">ALL</button>
+          <button id="next-button" class="button hidden">NEXT</button>
+          <button id="finish-button" class="button hidden">FINISH</button>
+        </div>
       </div>
     </div>
     <div id="result-div" class="hidden">
       <div id="results">
-        <a href="gallery.html#Kia">
+        <a href="gallery.html" id="result-1">
           <div class="result">
             <img src="images/cars/placeholder.jpg" class="result-photo">
             <div class="result-div">
@@ -220,7 +222,7 @@
             </div>
           </div>
         </a>
-        <a href="gallery.html">
+        <a href="gallery.html" id="result-2">
           <div class="result">
             <img src="images/cars/placeholder.jpg" class="result-photo">
             <div class="result-div">
@@ -232,7 +234,7 @@
             </div>
           </div>
         </a>
-        <a href="gallery.html">
+        <a href="gallery.html" id="result-3">
           <div class="result">
             <img src="images/cars/placeholder.jpg" class="result-photo">
             <div class="result-div">

@@ -6,6 +6,8 @@ function loadContent(brand){
 
   if(filteredCars.length > 0){
     filteredCars.forEach((element) => {
+      const gallery = document.getElementById("cars-container");
+
       const carConstainer = document.createElement("div");
       carConstainer.classList.add("car-container");
 
@@ -28,6 +30,7 @@ function loadContent(brand){
           carConstainer.style.height = "650px";
           arrow.style.rotate = "180deg";
           opened = true;
+          arrow.scrollIntoView({ block:"nearest", behavior:"smooth" });
         }else{
           specsDiv.classList.add("hidden");
           carConstainer.style.height = "300px";

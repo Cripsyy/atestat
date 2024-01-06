@@ -18,6 +18,11 @@
   font-size: 1.5rem;
 }
 
+.line{
+  border: 3px white solid;
+  border-radius: 10px;
+}
+
 .about-use,
 .about-website{
   display: flex;

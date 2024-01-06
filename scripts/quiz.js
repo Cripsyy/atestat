@@ -20,6 +20,7 @@ function startQuiz(){
   initialDiv.classList.add("hidden");
   questionDiv.classList.remove("hidden");
   nextButton.classList.remove("hidden");
+  previousButton.classList.remove("hidden");
   form.querySelectorAll("input").forEach((input) => { 
     input.addEventListener("change", changedValue);
   });
@@ -49,7 +50,9 @@ function changeQuestion(button){
 
   //make previous button appear from the second option
   if(index >= 0){
-    previousButton.classList.remove("hidden");
+    previousButton.textContent = "PREVIOUS";
+    previousButton.style.backgroundColor = "rgb(0, 0, 0)"
+    previousButton.style.cursor = "pointer";
   }
   //make finish button appear at the last question
   if(index === answers.length - 1){
@@ -58,7 +61,9 @@ function changeQuestion(button){
   }
   //make previous button disappear from the second option
   if(index <= 0){
-    previousButton.classList.add("hidden");
+    previousButton.textContent = "";
+    previousButton.style.backgroundColor = "rgb(255, 255, 255)"
+    previousButton.style.cursor = "default";
   }
   //make next button appear if you return from the last question
   if(index < answers.length - 1){
@@ -108,12 +113,18 @@ function nextQuestion() {
   }
   
   changeQuestion("next");
-
 }
 
+let tanc = 0;
 
 function previousQuestion(){
-  changeQuestion("prev");
+  
+  if(this.textContent !== ""){
+    changeQuestion("prev");
+  }else{
+    tanc++;
+    console.log(tanc);
+  }
 }
 
 function checkAll(){
@@ -257,9 +268,9 @@ function calculateResults(){
     }
   }
   cars.sort((a,b) => a.points - b.points);
-  // for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
-  //   console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
-  // }
+  for (let carsIndex = 0; carsIndex < cars.length; carsIndex++) {
+    console.log(cars[carsIndex].number + " " + cars[carsIndex].points);
+  }
   for(let carsIndex = cars.length - 1; carsIndex >= (cars.length-3); carsIndex--){
     bestResults.push(cars[carsIndex]);
   }
@@ -290,6 +301,29 @@ function showResult() {
     const year = result.querySelector(".year");
     year.textContent += bestResults[index].year;
   });
+
+  if(tanc >= 6){
+    const firstResult = document.getElementById("result-1");
+    const lastResult = document.getElementById("result-3");
+    results.removeChild(firstResult);
+    results.removeChild(lastResult);
+
+    const image = results.querySelector(".result-photo");
+    image.src = "images/cars/tiger-1.jpg";
+    console.log(image);
+
+    const title = results.querySelector(".title");
+    title.textContent = "Tiger 1";
+    console.log(title);
+    
+    const price = results.querySelector(".price");
+    price.textContent = "Pret: 1,282,051$";
+    console.log(price)
+
+    const year = results.querySelector(".year");
+    year.textContent = "An fabricatie 1942";
+    console.log(year);
+  }
 }
 
 function showMore() {
@@ -297,7 +331,6 @@ function showMore() {
   const moreResults = document.getElementById("more-results");
   const results = document.getElementById("result-div");
   const button = document.querySelector(".more-button");
-  console.log(button.textContent);
   if(button.textContent === "SHOW MORE"){
     results.classList.add("show-more");
     moreResults.classList.remove("hidden");
@@ -312,8 +345,9 @@ function showMore() {
         price.textContent = "Pret: " + otherResults[index + 3].price + `€`;
   
         const year = result.querySelector(".year");
-        year.textContent = "An fabricatzie: " + otherResults[index + 3].year;
+        year.textContent = "An fabricatie: " + otherResults[index + 3].year;
       });
+    button.scrollIntoView({ block:"nearest", behavior:"smooth" })
     button.textContent = "SHOW LESS";
   }else{
     results.classList.remove("show-more");
