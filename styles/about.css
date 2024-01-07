@@ -16,6 +16,7 @@
   padding: 20px;
   column-gap: 20px;
   font-size: 1.5rem;
+  position: relative;
 }
 
 .line{
@@ -27,17 +28,20 @@
 .about-website{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-align: justify;
   width: 50%;
   height: 100%;
-
 }
 
 .title{
   font-size: 2rem;
   font-weight: bold;
   align-self: center;
+  position: absolute;
+  top: 20px;
 }
+
 
 
 
