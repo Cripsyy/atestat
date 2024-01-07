@@ -29,6 +29,11 @@
   height: 100%;
 }
 
+.nav-bar-buttons{
+  display: flex;
+  align-items: center;
+}
+
 .nav-bar-button,
 .logo-button{
   text-decoration: none;
@@ -45,6 +50,25 @@
 .logo-text:hover{
   font-weight: 700;
   color: azure;
+}
+
+.burger-menu{
+  display: none;
+  cursor: pointer;
+}
+
+.menu{
+  background-color: rgb(30, 168, 9);
+  height: 100vh;
+}
+
+@media screen and (max-width: 750px) {
+  .nav-bar-buttons{
+    display: none;
+  }
+  .burger-menu{
+    display: block;
+  }
 }
 
 

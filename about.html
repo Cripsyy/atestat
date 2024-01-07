@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles/navbar.css">
   <link rel="stylesheet" href="styles/about.css">
 
-  <script src="scripts/about.js" defer></script>
+  <script src="scripts/navbar.js" defer></script>
 </head>
 <body>
   <header id="nav-bar">
@@ -17,12 +17,15 @@
         <p class="logo-text">QuizDrive</p>
       </a>
     </div>
-    <div>
+    <div class="nav-bar-buttons">
       <a class="nav-bar-button" href="index.html">Home</a>
       <a class="nav-bar-button" href="gallery.html">Gallery</a>
       <a class="nav-bar-button" href="about.html">About</a>
       <a class="nav-bar-button" href="contact.html">Contact</a>
-    </div>  
+    </div>
+    <div class="burger-menu" onclick="openMenu()">
+      <img src="images/burger-menu.svg">
+    </div>
   </header>
 
   <div id="about-main">
